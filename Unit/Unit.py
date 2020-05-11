@@ -5,6 +5,7 @@ from Resouces import weapons, armory, names
 class Unit:
     def __init__(self, name, hp, low_dmg, high_dmg, armor, evade_chance, accuracy):
         self.__name = name
+        self.__max_hp = hp
         self.__hp = hp
         self.__low_dmg = low_dmg
         self.__high_dmg = high_dmg
@@ -20,6 +21,10 @@ class Unit:
     @hp.setter
     def hp(self, value):
         self.__hp = value
+
+    @property
+    def max_hp(self):
+        return self.__max_hp
 
     @property
     def name(self):
