@@ -4,51 +4,14 @@ from Resouces import weapons, armory, names
 
 class Unit:
     def __init__(self, name, hp, low_dmg, high_dmg, armor, evade_chance, accuracy):
-        self.__name = name
-        self.__max_hp = hp
-        self.__hp = hp
-        self.__low_dmg = low_dmg
-        self.__high_dmg = high_dmg
-        self.__armor = armor
-        self.__evade_chance = evade_chance
-        self.__accuracy = accuracy
-
-    # property = getter
-    @property
-    def hp(self):
-        return self.__hp
-
-    @hp.setter
-    def hp(self, value):
-        self.__hp = value
-
-    @property
-    def max_hp(self):
-        return self.__max_hp
-
-    @property
-    def name(self):
-        return self.__name
-
-    @property
-    def low_dmg(self):
-        return self.__low_dmg
-
-    @property
-    def high_dmg(self):
-        return self.__high_dmg
-
-    @property
-    def armor(self):
-        return self.__armor
-
-    @property
-    def evade_chance(self):
-        return self.__evade_chance
-
-    @property
-    def accuracy(self):
-        return self.__accuracy
+        self.name = name
+        self.max_hp = hp
+        self.hp = hp
+        self.low_dmg = low_dmg
+        self.high_dmg = high_dmg
+        self.armor = armor
+        self.evade_chance = evade_chance
+        self.accuracy = accuracy
 
     # log death event
     def die(self):
@@ -73,6 +36,18 @@ class Unit:
                 print(self.name + " tried to hit " + a.name + " but it was a miss")
         else:
             raise AttributeError
+
+    def print_attack_stats(self):
+        print("damage:", self.low_dmg, "-", self.high_dmg, "accuracy:", self.accuracy)
+
+    def print_living_stats(self):
+        print("health {0}/{1}, armor: {2}, evade: {3}".format(self.hp, self.max_hp, self.armor, self.evade_chance))
+
+    def print(self):
+        print(self.name)
+        self.print_attack_stats()
+        self.print_living_stats()
+        print()
 
     # not straight fabric constructor using game items
     @classmethod
@@ -100,3 +75,47 @@ class Unit:
                        obj_armor, obj_evade_chance, obj_accuracy)
         else:
             raise AttributeError
+
+
+class Player(Unit):
+    strength = 1
+    dexterity = 1
+    charisma = 1
+    weapon = "none"
+    clothes = "none"
+
+    def __init__(self):
+        super(Player, self).__init__("You", 25, 2, 4, 0, 45, 5)
+
+    def set_weapon(self, weapon):
+        if weapon in weapons.weapon_dictionary.keys():
+            self.low_dmg -= weapons.weapon_dictionary[self.weapon][0]
+            self.low_dmg -= weapons.weapon_dictionary[self.weapon][1]
+            self.accuracy -= weapons.weapon_dictionary[self.weapon][2]
+
+            self.low_dmg += weapons.weapon_dictionary[weapon][0]
+            self.high_dmg += weapons.weapon_dictionary[weapon][1]
+            self.accuracy += weapons.weapon_dictionary[weapon][2]
+
+            self.weapon = weapon
+
+    def set_clothes(self, armor):
+        if armor in armory.armor_dictionary.keys():
+            self.armor = self.armor - armory.armor_dictionary[self.clothes][0] + armory.armor_dictionary[armor][0]
+            self.evade_chance = self.armor - armory.armor_dictionary[self.clothes][1] + armory.armor_dictionary[armor][1]
+
+            self.clothes = armor
+
+    def inc_str(self, num=1):
+        self.strength += num
+        self.max_hp += 5 * num
+        self.low_dmg += num
+        self.high_dmg += 2 * num
+
+    def inc_dex(self, num=1):
+        self.accuracy += 5 * num
+        self.evade_chance += 5 * num
+        self.dexterity += num
+
+    def inc_char(self, num=1):
+        self.charisma += num
