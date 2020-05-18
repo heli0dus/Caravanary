@@ -1,5 +1,5 @@
 import random as rnd
-from Resouces import weapons, armory, names
+from Resources import weapons, armory, names
 
 
 class Unit:
