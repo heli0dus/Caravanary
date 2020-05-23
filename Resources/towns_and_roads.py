@@ -1,10 +1,13 @@
 specialization_type = {
-
+    # human_food(1), animal_food(2), weapon(3), armor(4), luxury(5), slaves(6), hireable(7), animals(8)
+    "poor": (1, 1, 1, 1, 1, 1, 1, 1),
+    "normal": (1, 1, 1, 1, 1, 1, 1, 1),
 }
 
 richness_type = {
-    "poor": (1, 1, 1, 1, 1, 1, 1, 1, 1),
-    "normal": (1, 1, 1, 1, 1, 1, 1, 1, 1),
+    # human_food(1), animal_food(2), weapon(3), armor(4), luxury(5), slaves(6), hireable(7), animals (8)
+    "poor": (1, 1, 1, 1, 1, 1, 1, 1),
+    "normal": (1, 1, 1, 1, 1, 1, 1, 1),
 }
 
 point_type = (
