@@ -50,3 +50,5 @@ class Town:
     # Gives message about town you arrived to
     def arrival(self):
         print("You arrived into town named " + self.name)
+# TODO      TradePoint's generation
+# TODO      Movement function

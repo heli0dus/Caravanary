@@ -4,6 +4,7 @@ import random as random
 
 print(slaves.slaves_variability)
 
+
 class TradePoint:
     def __init__(self, town, point_type):
         self.town = town
@@ -13,7 +14,7 @@ class TradePoint:
 # TODO      another town sizes
         if town.size < 3:
             repeatings = 1
-        if (town.size < 6)and(town.size>2):
+        elif (town.size < 6) and (town.size > 2):
             repeatings = 3
         for j in range(repeatings):
             if point_type == "Market":
@@ -71,5 +72,6 @@ class TradePoint:
                 self.goods_map = {slaves.slaves_dictionary.keys()[randnum - 1],
                                   slaves.slaves_dictionary[slaves.slaves_dictionary.keys()[randnum - 1]][-1]
                                   * self.specialization_multipliers[6] * self.richness_multipliers[6] * random_multiplier}
+
 # TODO      trade function
 # TODO      goods descriptions
