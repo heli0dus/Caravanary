@@ -1,6 +1,7 @@
 armor_dictionary = {
-    "leather armor": (5, -5),
-    "iron armor": (10, -10)
+    # ?, ?, cost
+    "leather armor": (5, -5, 20),
+    "iron armor": (10, -10, 30)
 }
 
 armor_variability = len(armor_dictionary)

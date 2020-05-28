@@ -19,3 +19,8 @@ class PlayerCaravan:
     warrior_set = set()
     location = ""
 
+# TODO      trade function
+# TODO      movement function
+# TODO      leveling
+# TODO      equipment
+# TODO      refactor imports

@@ -1,11 +1,11 @@
 specialization_type = {
-    # human_food(1), animal_food(2), weapon(3), armor(4), luxury(5), slaves(6), hireable(7), animals(8)
-    "poor": (1, 1, 1, 1, 1, 1, 1, 1),
-    "normal": (1, 1, 1, 1, 1, 1, 1, 1),
+    # human_food(0), animal_food(1), weapon(2), armor(3), luxury(4), slaves(5), hireable(6), animals(7)
+    "farm": (1, 1, 1, 1, 1, 1, 1, 1),
+    "forgery": (1, 1, 1, 1, 1, 1, 1, 1),
 }
 
 richness_type = {
-    # human_food(1), animal_food(2), weapon(3), armor(4), luxury(5), slaves(6), hireable(7), animals (8)
+    # human_food(0), animal_food(1), weapon(2), armor(3), luxury(4), slaves(5), hireable(6), animals (7)
     "poor": (1, 1, 1, 1, 1, 1, 1, 1),
     "normal": (1, 1, 1, 1, 1, 1, 1, 1),
 }
@@ -15,7 +15,7 @@ point_type = (
     "Armory",
     "Mercenary Guild",
     "Bestiary",
-    "Slave Market"
+    "Slave Market",
     "Luxury"
 )
 
