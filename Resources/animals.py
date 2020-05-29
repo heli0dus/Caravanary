@@ -6,3 +6,8 @@ animals_dictionary = {
 }
 
 animals_variability = len(animals_dictionary)
+
+# TODO size
+# TODO descriptions
+# TODO carry-weight
+# TODO more goods

@@ -5,3 +5,7 @@ slaves_dictionary = {
 }
 
 slaves_variability = len(slaves_dictionary)
+
+# TODO size
+# TODO descriptions
+# TODO more goods

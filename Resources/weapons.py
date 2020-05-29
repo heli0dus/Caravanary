@@ -6,3 +6,7 @@ weapon_dictionary = {
 }
 
 weapon_variability = len(weapon_dictionary)
+
+# TODO size
+# TODO descriptions
+# TODO more goods

@@ -6,3 +6,7 @@ armor_dictionary = {
 }
 
 armor_variability = len(armor_dictionary)
+
+# TODO size
+# TODO descriptions
+# TODO more goods
