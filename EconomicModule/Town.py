@@ -22,7 +22,7 @@ class Town:
         self.points = []
         for i in range(size):
             randnum = random.randint(1, 6)
-            print(towns_and_roads.point_type[randnum-1] + ':')
+            print('\n' + towns_and_roads.point_type[randnum-1] + ':')
             a = TradePoint.TradePoint(self, towns_and_roads.point_type[randnum-1])
             self.points.append(a)
 

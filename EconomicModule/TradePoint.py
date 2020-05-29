@@ -32,13 +32,13 @@ class TradePoint:
                             food_resources.animals_food_dictionary[list(food_resources.animals_food_dictionary.keys())[randnum - food_resources.human_food_variability - 1]][-1] * \
                             self.specialization_multipliers[1] * self.richness_multipliers[1] * random_multiplier // 0.01 / 100
                         print("Added: ", list(food_resources.animals_food_dictionary.keys())[
-                            randnum - food_resources.human_food_variability - 1], '\n')  # Temporal
+                            randnum - food_resources.human_food_variability - 1])  # Temporal
                     else:
                         # for human_food
                         self.goods_map[list(food_resources.human_food_dictionary.keys())[randnum - 1]] = \
                             food_resources.human_food_dictionary[list(food_resources.human_food_dictionary.keys())[randnum - 1]][-1] * \
                             self.specialization_multipliers[0] * self.richness_multipliers[0] * random_multiplier // 0.01 / 100
-                        print("Added: ", list(food_resources.human_food_dictionary.keys())[randnum - 1], '\n')  # Temporal
+                        print("Added: ", list(food_resources.human_food_dictionary.keys())[randnum - 1])  # Temporal
             if point_type == "Armory":
                 randnum = random.randint(1, armory.armor_variability + weapons.weapon_variability)
                 print("(", end="")  # Temporal
@@ -50,13 +50,13 @@ class TradePoint:
                     self.goods_map[list(weapons.weapon_dictionary.keys())[randnum - armory.armor_variability - 1]] = \
                         weapons.weapon_dictionary[list(weapons.weapon_dictionary.keys())[randnum - armory.armor_variability - 1]][-1] * \
                         self.specialization_multipliers[2] * self.richness_multipliers[2] * random_multiplier // 0.01 / 100
-                    print("Added: ", list(weapons.weapon_dictionary.keys())[randnum - armory.armor_variability - 1], '\n')  # Temporal
+                    print("Added: ", list(weapons.weapon_dictionary.keys())[randnum - armory.armor_variability - 1])  # Temporal
                 else:
                     # for armor
                     self.goods_map[list(armory.armor_dictionary.keys())[randnum - 1]] = \
                         armory.armor_dictionary[list(armory.armor_dictionary.keys())[randnum - 1]][-1] * \
                         self.specialization_multipliers[3] * self.richness_multipliers[3] * random_multiplier // 0.01 / 100
-                    print("Added: ", list(armory.armor_dictionary.keys())[randnum - 1], '\n')  # Temporal
+                    print("Added: ", list(armory.armor_dictionary.keys())[randnum - 1])  # Temporal
             if point_type == "Bestiary":
                 randnum = random.randint(1, animals.animals_variability)
                 print("(", end="")  # Temporal
@@ -67,7 +67,7 @@ class TradePoint:
                 self.goods_map[list(animals.animals_dictionary.keys())[randnum - 1]] = \
                     animals.animals_dictionary[list(animals.animals_dictionary.keys())[randnum - 1]][-1] * \
                     self.specialization_multipliers[7] * self.richness_multipliers[7] * random_multiplier // 0.01 / 100
-                print("Added: ", list(animals.animals_dictionary.keys())[randnum - 1], '\n')  # Temporal
+                print("Added: ", list(animals.animals_dictionary.keys())[randnum - 1])  # Temporal
             if point_type == "Luxury":
                 randnum = random.randint(1, luxury.luxury_variability)
                 print("(", end="")  # Temporal
@@ -78,7 +78,7 @@ class TradePoint:
                 self.goods_map[list(luxury.luxury_dictionary.keys())[randnum - 1]] = \
                     luxury.luxury_dictionary[list(luxury.luxury_dictionary.keys())[randnum - 1]][-1] * \
                     self.specialization_multipliers[4] * self.richness_multipliers[4] * random_multiplier // 0.01 / 100
-                print("Added: ", list(luxury.luxury_dictionary.keys())[randnum - 1], '\n')  # Temporal
+                print("Added: ", list(luxury.luxury_dictionary.keys())[randnum - 1])  # Temporal
             if point_type == "Mercenary Guild":
                 randnum = random.randint(1, hireable.hireable_variability)
                 print("(", end="")  # Temporal
@@ -89,7 +89,7 @@ class TradePoint:
                 self.goods_map[list(hireable.hireable_dictionary.keys())[randnum - 1]] = \
                     hireable.hireable_dictionary[list(hireable.hireable_dictionary.keys())[randnum - 1]][-1] * \
                     self.specialization_multipliers[6] * self.richness_multipliers[6] * random_multiplier // 0.01 / 100
-                print("Added: ", list(hireable.hireable_dictionary.keys())[randnum - 1], '\n')  # Temporal
+                print("Added: ", list(hireable.hireable_dictionary.keys())[randnum - 1])  # Temporal
             if point_type == "Slave Market":
                 randnum = random.randint(1, slaves.slaves_variability)
                 print("(", end="")  # Temporal
@@ -100,7 +100,7 @@ class TradePoint:
                 self.goods_map[list(slaves.slaves_dictionary.keys())[randnum - 1]] = \
                     slaves.slaves_dictionary[list(slaves.slaves_dictionary.keys())[randnum - 1]][-1] * \
                     self.specialization_multipliers[5] * self.richness_multipliers[5] * random_multiplier // 0.01 / 100
-                print("Added: ", list(slaves.slaves_dictionary.keys())[randnum - 1], '\n')  # Temporal
+                print("Added: ", list(slaves.slaves_dictionary.keys())[randnum - 1])  # Temporal
 
     def ret_goods_map(self):
         s = ""
