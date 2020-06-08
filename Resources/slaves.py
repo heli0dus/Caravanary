@@ -1,7 +1,7 @@
 slaves_dictionary = {
-    # ?, cost
-    "Basic Slave-Worker": (0, 10),
-    "Basic Slave-Warrior": (0, 15)
+    # ?, slave_type, description, size, cost
+    "Basic Slave-Worker": (0, "worker", "", 0, 10),
+    "Basic Slave-Warrior": (0, "warrior", "", 0, 15)
 }
 
 slaves_variability = len(slaves_dictionary)

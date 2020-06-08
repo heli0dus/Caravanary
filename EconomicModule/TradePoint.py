@@ -25,7 +25,7 @@ class TradePoint:
                     print("(", end="")  # Temporal
                     print(randnum, end="")  # Temporal
                     print(") ", end="")  # Temporal
-                    # random_multiplier = 1 + (random.randint(1, 150)/100)
+
                     if randnum > food_resources.human_food_variability:
                         # for animal_food
                         self.goods_map[list(food_resources.animals_food_dictionary.keys())[randnum - food_resources.human_food_variability - 1]] = \
@@ -44,7 +44,7 @@ class TradePoint:
                 print("(", end="")  # Temporal
                 print(randnum, end="")  # Temporal
                 print(") ", end="")  # Temporal
-                # random_multiplier = 1 + (random.randint(1, 150) / 100)
+
                 if randnum > armory.armor_variability:
                     # for weapon
                     self.goods_map[list(weapons.weapon_dictionary.keys())[randnum - armory.armor_variability - 1]] = \
@@ -62,7 +62,7 @@ class TradePoint:
                 print("(", end="")  # Temporal
                 print(randnum, end="")  # Temporal
                 print(") ", end="")  # Temporal
-                # random_multiplier = 1 + (random.randint(1, 150) / 100)
+
                 # for animals
                 self.goods_map[list(animals.animals_dictionary.keys())[randnum - 1]] = \
                     animals.animals_dictionary[list(animals.animals_dictionary.keys())[randnum - 1]][-1] * \
@@ -73,7 +73,7 @@ class TradePoint:
                 print("(", end="")  # Temporal
                 print(randnum, end="")  # Temporal
                 print(") ", end="")  # Temporal
-                # random_multiplier = 1 + (random.randint(1, 150) / 100)
+
                 # for luxury
                 self.goods_map[list(luxury.luxury_dictionary.keys())[randnum - 1]] = \
                     luxury.luxury_dictionary[list(luxury.luxury_dictionary.keys())[randnum - 1]][-1] * \
@@ -84,7 +84,7 @@ class TradePoint:
                 print("(", end="")  # Temporal
                 print(randnum, end="")  # Temporal
                 print(") ", end="")  # Temporal
-                # random_multiplier = 1 + (random.randint(1, 150) / 100)
+
                 # for hireable
                 self.goods_map[list(hireable.hireable_dictionary.keys())[randnum - 1]] = \
                     hireable.hireable_dictionary[list(hireable.hireable_dictionary.keys())[randnum - 1]][-1] * \
@@ -95,7 +95,7 @@ class TradePoint:
                 print("(", end="")  # Temporal
                 print(randnum, end="")  # Temporal
                 print(") ", end="")  # Temporal
-                # random_multiplier = 1 + (random.randint(1, 150) / 100)
+
                 # for slaves
                 self.goods_map[list(slaves.slaves_dictionary.keys())[randnum - 1]] = \
                     slaves.slaves_dictionary[list(slaves.slaves_dictionary.keys())[randnum - 1]][-1] * \
