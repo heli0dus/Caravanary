@@ -27,31 +27,33 @@ class PlayerCaravan:
 
 
 #   Function to turn goods into money by goods_name or character name as goods_name
-    def caravan_sell(self, goods_name):
+    def caravan_sell(self, goods_name, point):
         if self.items_map[goods_name] > 0:
             for DICT in dictionaries.dictionaries:
                 if goods_name in DICT:
-                    if self.caravan_capacity - DICT[goods_name][-2] <= 0:
-                        self.caravan_capacity -= DICT[goods_name][-2]
-                    else:
-                        print("Can't sell, not enough capacity")
-                        break
-                    self.items_map[goods_name] += 1
-                    self.money += DICT[goods_name][-1]
-                    if DICT[goods_name][-2] >= 0:
-                        self.capacity_current -= DICT[goods_name][-2]
-                    else:
-                        self.capacity_maximum -= DICT[goods_name][-2]
                     if DICT == dictionaries.dictionaries[1]:
-                        self.animal_size -= 1
-        elif goods_name in names.names:
-            # TODO selling slaves
+                        # TODO "sell" for animals
+                    elif DICT == dictionaries.dictionaries[3]:
+                        # TODO "sell" for food
+                    elif DICT == dictionaries.dictionaries[4]:
+                        # TODO "sell" for hireable
+                    elif DICT == dictionaries.dictionaries[6]:
+                        # TODO "sell" for slaves
+                    else:
+                        self.items_map[goods_name] -= 1
+                        self.caravan_capacity -= DICT[goods_name][-2]
+                        self.money += DICT[goods_name][-1]
+                        # TODO TradePoint multiplier for "sell"
+                else:
+                    print("What is that thing?")
         else:
-            print("There is no ", goods_name, " in inventory") # Temporal
+            print("You don't have " + goods_name + " in your inventory")
 
-# TODO      trade function
+    def caravan_move(self, target):
 # TODO      movement function
+
+
+# TODO      trade functions (in progress)
 # TODO      leveling
 # TODO      equipment
 # TODO      refactor imports
-# TODO      delete all #Temporal
