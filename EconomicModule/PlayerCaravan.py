@@ -1,5 +1,6 @@
-import Resources.dictionaries as dictionaries
+import Resources.tradeable_goods as dictionaries
 import Resources.names as names
+
 
 class PlayerCaravan:
     name = ""               # Caravan's name given by player
@@ -25,32 +26,31 @@ class PlayerCaravan:
     warrior_set = set()     # Set of slaves-warriors
     location = ""           # Name of current location
 
-
 #   Function to turn goods into money by goods_name or character name as goods_name
-    def caravan_sell(self, goods_name, point):
-        if self.items_map[goods_name] > 0:
-            for DICT in dictionaries.dictionaries:
-                if goods_name in DICT:
-                    if DICT == dictionaries.dictionaries[1]:
-                        # TODO "sell" for animals
-                    elif DICT == dictionaries.dictionaries[3]:
-                        # TODO "sell" for food
-                    elif DICT == dictionaries.dictionaries[4]:
-                        # TODO "sell" for hireable
-                    elif DICT == dictionaries.dictionaries[6]:
-                        # TODO "sell" for slaves
-                    else:
-                        self.items_map[goods_name] -= 1
-                        self.caravan_capacity -= DICT[goods_name][-2]
-                        self.money += DICT[goods_name][-1]
-                        # TODO TradePoint multiplier for "sell"
-                else:
-                    print("What is that thing?")
-        else:
-            print("You don't have " + goods_name + " in your inventory")
+#     def caravan_sell(self, goods_name, point):
+#         if self.items_map[goods_name] > 0:
+#             for DICT in dictionaries.dictionaries:
+#                 if goods_name in DICT:
+#                     if DICT == dictionaries.dictionaries[1]:
+#                         # TODO "sell" for animals
+#                     elif DICT == dictionaries.dictionaries[3]:
+#                         # TODO "sell" for food
+#                     elif DICT == dictionaries.dictionaries[4]:
+#                         # TODO "sell" for hireable
+#                     elif DICT == dictionaries.dictionaries[6]:
+#                         # TODO "sell" for slaves
+#                     else:
+#                         self.items_map[goods_name] -= 1
+#                         self.caravan_capacity -= DICT[goods_name][-2]
+#                         self.money += DICT[goods_name][-1]
+#                         # TODO TradePoint multiplier for "sell"
+#                 else:
+#                     print("What is that thing?")
+#         else:
+#             print("You don't have " + goods_name + " in your inventory")
 
-    def caravan_move(self, target):
-# TODO      movement function
+#     def caravan_move(self, target):
+# # TODO      movement function
 
 
 # TODO      trade functions (in progress)

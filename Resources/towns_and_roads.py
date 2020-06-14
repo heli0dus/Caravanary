@@ -5,7 +5,7 @@ specialization_type = {
 }
 
 richness_type = {
-    # human_food(0), animal_food(1), weapon(2), armor(3), luxury(4), slaves(5), hireable(6), animals (7)
+    # human_food(0), animal_food(1), weapon(2), armor(3), luxury(4), slaves(5), hireable(6), animals(7)
     "poor": (1, 1, 1, 1, 1, 1, 1, 1),
     "normal": (1, 1, 1, 1, 1, 1, 1, 1),
 }
@@ -15,8 +15,8 @@ point_type = (
     "Armory",
     "Mercenary Guild",
     "Bestiary",
-    "Slave Market",
-    "Luxury"
+    "Luxury",
+    # "Slave Market",
 )
 
 towns_names = (

@@ -1,11 +1,3 @@
-human_food_dictionary = {
-    # days, description, size, cost
-    "bread": (1, "", 1, 10),
-    "crackers": (2, "", 2, 14),
-    "cheese": (2, "", 1, 15),
-    "jerky": (4, "", 2, 20),
-
-}
 animals_food_dictionary = {
     # days, description, size, cost
     "bran": (1, "", 1, 5),
@@ -14,7 +6,6 @@ animals_food_dictionary = {
     "corn": (4, "", 2, 17),
 }
 
-human_food_variability = len(human_food_dictionary)
 animals_food_variability = len(animals_food_dictionary)
 
 # days - provides supplies for N days
@@ -23,4 +14,4 @@ animals_food_variability = len(animals_food_dictionary)
 # cost - cost N money by default
 
 # TODO descriptions
-# TODO more goods(?)
+# TODO more goods

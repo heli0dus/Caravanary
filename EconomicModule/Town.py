@@ -14,18 +14,18 @@ def get_town_index(town):
 
 
 class Town:
-    def __init__(self, name, specialization, richness, size, connections):
+    def __init__(self, name, specialization, richness, size):
         self.name = name                        # town name
         self.specialization = specialization    # town specialization
         self.richness = richness                # town richness
         self.size = size                        # town size
         self.points = []                        # list of town TradePoint's
         for i in range(size):
-            randnum = random.randint(1, 6)
+            randnum = random.randint(1, 5)
             print('\n' + towns_and_roads.point_type[randnum-1] + ':')
             a = TradePoint.TradePoint(self, towns_and_roads.point_type[randnum-1])
             self.points.append(a)
-        self.connections = connections          # list of connected town's
+        # self.connections = connections          # list of connected town's
 
     # # Returns(dict String:int) dictionary of towns and distances to them which you can get from here
     # def get_connections(self):
