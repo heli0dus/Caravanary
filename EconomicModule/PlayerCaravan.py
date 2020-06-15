@@ -72,11 +72,17 @@ class PlayerCaravan:
                 i.print()
         else:
             print("You don't have any mercenaries.")
+
+    def fire_mercenary(self, mercenary):
+        self.to_pay -= mercenary.salry
+        self.mercenary_size -= 1
+        self.human_size -= 1
+        self.mercenary_set.remove(mercenary)
+
     # TODO game start function
     # TODO player control functions
     # TODO /help message
     # TODO daily update method
-    # TODO fire mercenary
     # TODO open food method
     # TODO drive the animal away
     # TODO slaughter an animal
