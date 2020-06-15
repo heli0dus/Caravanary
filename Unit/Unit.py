@@ -218,3 +218,10 @@ class Mercenary(Unit):
     @classmethod
     def ultimate_generator(cls):
         return cls(super().random_unit_generator(weapons.ultimate, armory.ultimate), rnd.randint(5, 10))
+
+    def print(self):
+        print(self.name)
+        self.print_attack_stats()
+        self.print_living_stats()
+        print("salary:", self.salary)
+        print()
