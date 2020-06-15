@@ -1,5 +1,6 @@
 import Resources.tradeable_goods as dictionaries
 import Resources.names as names
+import Resources.animals
 import Resources.tradeable_goods as tradeable_goods
 import EconomicModule.TradePoint
 import random as rnd
@@ -78,27 +79,54 @@ class PlayerCaravan:
     # TODO daily update method
     # TODO fire mercenary
     # TODO open food method
-    # TODO drive the animal away
+
     # TODO slaughter an animal
 
     # Allows to delete animal from caravan
     def drive_out_animal(self, animal_name):
-        if animal_name in self.items_map.keys() and self.items_map[animal_name] > 0:
-            if tradeable_goods.tradeable_goods[animal_name][-2] < 0:
-                if self.caravan_capacity - tradeable_goods.tradeable_goods[animal_name][-2] <= 0:
+        if animal_name in Resources.animals.animals_dictionary:
+            if animal_name in self.items_map.keys() and self.items_map[animal_name] > 0:
+                if tradeable_goods.tradeable_goods[animal_name][-2] < 0:
+                    if self.caravan_capacity - tradeable_goods.tradeable_goods[animal_name][-2] <= 0:
+                        self.caravan_capacity -= tradeable_goods.tradeable_goods[animal_name][-2]
+                        self.capacity_maximum -= tradeable_goods.tradeable_goods[animal_name][-2]
+                        self.animal_size -= 1
+                        self.items_map[animal_name] -= 1
+                    else:
+                            print("You can't do this, you have not enough capacity.")
+                else:
                     self.caravan_capacity -= tradeable_goods.tradeable_goods[animal_name][-2]
-                    self.capacity_maximum -= tradeable_goods.tradeable_goods[animal_name][-2]
+                    self.capacity_current -= tradeable_goods.tradeable_goods[animal_name][-2]
                     self.animal_size -= 1
                     self.items_map[animal_name] -= 1
-                else:
-                        print("You can't do this, you have not enough capacity.")
             else:
-                self.caravan_capacity -= tradeable_goods.tradeable_goods[animal_name][-2]
-                self.capacity_current -= tradeable_goods.tradeable_goods[animal_name][-2]
-                self.animal_size -= 1
-                self.items_map[animal_name] -= 1
+                print("You have no such animal")
         else:
-            print("You have no such animal")
+            print("This is not an animal")
+
+    def slautgher_animal(self, animal_name):
+        if animal_name in Resources.animals.animals_dictionary:
+            if animal_name in self.items_map.keys() and self.items_map[animal_name] > 0:
+                if tradeable_goods.tradeable_goods[animal_name][-2] < 0:
+                    if self.caravan_capacity - tradeable_goods.tradeable_goods[animal_name][-2] <= 0:
+                        self.caravan_capacity -= tradeable_goods.tradeable_goods[animal_name][-2]
+                        self.capacity_maximum -= tradeable_goods.tradeable_goods[animal_name][-2]
+                        self.human_food_open += tradeable_goods.tradeable_goods[animal_name][2]
+                        self.animal_size -= 1
+                        self.items_map[animal_name] -= 1
+                    else:
+                            print("You can't do this, you have not enough capacity.")
+                else:
+                    self.caravan_capacity -= tradeable_goods.tradeable_goods[animal_name][-2]
+                    self.capacity_current -= tradeable_goods.tradeable_goods[animal_name][-2]
+                    self.human_food_open += tradeable_goods.tradeable_goods[animal_name][2]
+                    self.animal_size -= 1
+                    self.items_map[animal_name] -= 1
+            else:
+                print("You have no such animal")
+        else:
+            print("This is not an animal")
+
 
 #   Function to turn goods into money by goods_name or character name as goods_name
     def sell_item(self, goods_name, point):
