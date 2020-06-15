@@ -123,14 +123,15 @@ class TradePoint:
                 self.specialization_multipliers[4] * self.richness_multipliers[4] * random_multiplier // 1)
                 # print("Added: ", list(luxury.luxury_dictionary.keys())[randnum - 1])  # Temporal
             if point_type == "Mercenary Guild":
-                randnum = random.randint(1, hireable.hireable_variability)
-                # print("(", end="")  # Temporal
-                # print(randnum, end="")  # Temporal
-                # print(") ", end="")  # Temporal
-                # for hireable
-                self.goods_map[list(hireable.hireable_dictionary.keys())[randnum - 1]] = int(\
-                hireable.hireable_dictionary[list(hireable.hireable_dictionary.keys())[randnum - 1]][-1] * \
-                self.specialization_multipliers[6] * self.richness_multipliers[6] * random_multiplier // 1)
+                merc_name = random.choice(list(hireable.hireable_dictionary.keys()))
+                merc_obj = hireable.hireable_dictionary[merc_name][0]()
+                self.goods_map[str(len(self.goods_map)+1)] = (merc_obj, int(hireable.hireable_dictionary[merc_name][-1] * \
+                self.specialization_multipliers[6] * self.richness_multipliers[6] * random_multiplier // 1))
+                # randnum = random.randint(1, hireable.hireable_variability)
+                # # for hireable
+                # self.goods_map[list(hireable.hireable_dictionary.keys())[randnum - 1]] = int(\
+                # hireable.hireable_dictionary[list(hireable.hireable_dictionary.keys())[randnum - 1]][-1] * \
+                # self.specialization_multipliers[6] * self.richness_multipliers[6] * random_multiplier // 1)
                 # print("Added: ", list(hireable.hireable_dictionary.keys())[randnum - 1])  # Temporal
 
     # if point_type == "Slave Market":
@@ -146,13 +147,17 @@ class TradePoint:
     #     print("Added: ", list(slaves.slaves_dictionary.keys())[randnum - 1])  # Temporal
 
     def ret_goods_map(self):
-        s = ""
-        for i in self.goods_map.keys():
-            s = (s + i + ", cost: " + self.goods_map[i].__str__() + "\n")
-        return s[:-1]
+        if self.point_type == "Mercenary Guild":
+            s = ""
+            for i in self.goods_map.keys():
+                s = (s + i + ") " + self.goods_map[i][0].name + " (" + self.goods_map[i][0].type + "), salary: " +
+                str(self.goods_map[i][0].salary) + ", cost: " + str(self.goods_map[i][1]) + "\n")
+            return s[:-1]
+        else:
+            s = ""
+            for i in self.goods_map.keys():
+                s = (s + i + ", cost: " + self.goods_map[i].__str__() + "\n")
+            return s[:-1]
 
     def __str__(self):
         return self.point_type + ":" + '\n' + self.ret_goods_map()
-
-    # TODO      refactor imports
-    # TODO      change

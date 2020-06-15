@@ -1,13 +1,19 @@
 import Resources.tradeable_goods as dictionaries
 import Resources.names as names
+import Resources.animals
+import Resources.human_food
 import Resources.tradeable_goods as tradeable_goods
 import EconomicModule.TradePoint
 import random as rnd
+import Unit.Unit
+import Resources.towns_and_roads
+import EconomicModule.Town
 
 
 class PlayerCaravan:
     name = ""               # Caravan's name given by player
-    money = 0              # Current amount of money
+    player_unit = Unit.Unit.Player()     # Player Unit
+    money = 300              # Current amount of money
     to_pay = 0              # Amount of money spending on caravan per day
     debt = 0                # Current money debt
     debt_inc = 0            # Multiplier applied to debt every 7 days
@@ -23,7 +29,7 @@ class PlayerCaravan:
     human_size = 1          # Number of humans in caravan (including player's character)
     mercenary_size = 0      # Number of mercenaries in caravan
     mercenary_set = set()   # Set of mercenaries
-    location = "One"           # Name of current location
+    location = "Aibiusa"           # Name of current location
     # employee_size = 0       # Number of employee in caravan
     # employee_set = set()    # Set of employee
     # worker_size = 0         # Number of slaves-workers in caravan
@@ -64,12 +70,96 @@ class PlayerCaravan:
             print("Your inventory is empty.")
 
     # Shows set of mercenarys
-    # def caravan_get_mercenarys(self):
-    # TODO printing mercenaries list
-    # TODO fire mercenary
-    # TODO drive the animal away
-    # TODO slaughter an animal
+    def get_mercenarys(self):
+        if self.mercenary_size > 0:
+            for i in self.mercenary_set:
+                i.print()
+        else:
+            print("You don't have any mercenaries.")
 
+    def fire_mercenary(self, mercenary):
+        self.to_pay -= mercenary.salry
+        self.mercenary_size -= 1
+        self.human_size -= 1
+        self.mercenary_set.remove(mercenary)
+
+    # TODO game start function
+    # TODO player control functions
+    # TODO /help message
+    # TODO daily update method
+
+    # Allows to delete animal from caravan
+    def drive_out_animal(self, animal_name):
+        if animal_name in Resources.animals.animals_dictionary:
+            if animal_name in self.items_map.keys() and self.items_map[animal_name] > 0:
+                if tradeable_goods.tradeable_goods[animal_name][-2] < 0:
+                    if self.caravan_capacity - tradeable_goods.tradeable_goods[animal_name][-2] <= 0:
+                        self.caravan_capacity -= tradeable_goods.tradeable_goods[animal_name][-2]
+                        self.capacity_maximum -= tradeable_goods.tradeable_goods[animal_name][-2]
+                        self.animal_size -= 1
+                        self.items_map[animal_name] -= 1
+                    else:
+                            print("You can't do this, you have not enough capacity.")
+                else:
+                    self.caravan_capacity -= tradeable_goods.tradeable_goods[animal_name][-2]
+                    self.capacity_current -= tradeable_goods.tradeable_goods[animal_name][-2]
+                    self.animal_size -= 1
+                    self.items_map[animal_name] -= 1
+            else:
+                print("You have no such animal")
+        else:
+            print("This is not an animal")
+
+    def slautgher_animal(self, animal_name):
+        if animal_name in Resources.animals.animals_dictionary:
+            if animal_name in self.items_map.keys() and self.items_map[animal_name] > 0:
+                if tradeable_goods.tradeable_goods[animal_name][-2] < 0:
+                    if self.caravan_capacity - tradeable_goods.tradeable_goods[animal_name][-2] <= 0:
+                        self.caravan_capacity -= tradeable_goods.tradeable_goods[animal_name][-2]
+                        self.capacity_maximum -= tradeable_goods.tradeable_goods[animal_name][-2]
+                        self.human_food_open += tradeable_goods.tradeable_goods[animal_name][2]
+                        self.animal_size -= 1
+                        self.items_map[animal_name] -= 1
+                    else:
+                            print("You can't do this, you have not enough capacity.")
+                else:
+                    self.caravan_capacity -= tradeable_goods.tradeable_goods[animal_name][-2]
+                    self.capacity_current -= tradeable_goods.tradeable_goods[animal_name][-2]
+                    self.human_food_open += tradeable_goods.tradeable_goods[animal_name][2]
+                    self.animal_size -= 1
+                    self.items_map[animal_name] -= 1
+            else:
+                print("You have no such animal")
+        else:
+            print("This is not an animal")
+
+    def open_human_food(self, need):
+        flag = False
+        while not flag:
+            for i in self.items_map:
+                if i[0] == "human_food" and self.items_map[i] > 0:
+                    if i[1] == need:
+                        self.human_food_open += need
+                        self.items_map[i] -= 1
+                        flag = True
+                    else:
+                        need += 1
+        if not flag:
+            print("You don't have enough food.")
+
+    def open_animal_food(self, need):
+        flag = False
+        while not flag:
+            for i in self.items_map:
+                if i[0] == "animal_food" and self.items_map[i] > 0:
+                    if i[1] == need:
+                        self.animal_food_open += need
+                        self.items_map[i] -= 1
+                        flag = True
+                    else:
+                        need += 1
+        if not flag:
+            print("You don't have enough food.")
 
 #   Function to turn goods into money by goods_name or character name as goods_name
     def sell_item(self, goods_name, point):
@@ -210,8 +300,17 @@ class PlayerCaravan:
             if goods_name in point.goods_map.keys():
                 thing = tradeable_goods.tradeable_goods[goods_name]
                 if thing[0] == "hireable":
-                    print("You buying some mercenaries!")
-                    # TODO buy for mercenaries
+                    if point.point_type != "Mercenary Guild":
+                        print("> You buying some mercenaries! It's not here!")
+                    else:
+                        if self.money >= point.goods_map[goods_name][1]:
+                            print("Payed: ", point.goods_map[goods_name][1])
+                            self.money -= point.goods_map[goods_name][1]
+                            self.mercenary_size += 1
+                            self.to_pay += point.goods_map[goods_name][0].salary
+                            self.human_size += 1
+                            self.mercenary_set.add(point.goods_map[goods_name][0])
+                            del point.goods_map[goods_name]
                 elif thing[0] == "animal":
                     if point.point_type != "Bestiary":
                         print("> I don't have " + goods_name + ", here isn't Bestiary!")
@@ -313,7 +412,11 @@ class PlayerCaravan:
     def buy_multi_item(self, goods_name, point, number):
         if isinstance(point, EconomicModule.TradePoint.TradePoint):
             if goods_name in point.goods_map.keys():
-                if self.money >= point.goods_map[goods_name]*number:
+                if point.point_type == "Mercenary Guild":
+                    tempint = point.goods_map[goods_name][1]
+                else:
+                    tempint = point.goods_map[goods_name]
+                if self.money >= tempint*number:
                     thing = tradeable_goods.tradeable_goods[goods_name]
                     if thing[0] == "animal_food" or thing[0] == "human_food":
                         if point.point_type == "Market":
@@ -382,11 +485,14 @@ class PlayerCaravan:
         else:
             print("Wrong argument of enemies given")
 
-#     def caravan_move(self, target):
-# TODO      trade function
-# TODO      movement function
-# TODO      trade functions (in progress)
+    def caravan_move(self, target):
+        now = EconomicModule.Town.get_town_index(Resources.towns_and_roads.real_towns_names[self.location])
+        target = EconomicModule.Town.get_town_index(Resources.towns_and_roads.real_towns_names[target])
+        if Resources.towns_and_roads.roadsMatrix[now][target] > 0:
+            self.location = EconomicModule.Town.town_by_index(target).name
+            return Resources.towns_and_roads.roadsMatrix[now][target]
+        else:
+            print("There is no road to this town.")
+
 # TODO      leveling
 # TODO      equipment
-
-

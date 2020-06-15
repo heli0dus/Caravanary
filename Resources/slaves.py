@@ -6,6 +6,7 @@ slaves_dictionary = {
 
 slaves_variability = len(slaves_dictionary)
 
+# TODO add into game
 # TODO size
 # TODO descriptions
 # TODO more goods

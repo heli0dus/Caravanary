@@ -192,6 +192,7 @@ class Mercenary(Unit):
         self.salary = salary
         self.type = type
 
+    # TODO change salary
     @classmethod
     def rookie_generator(cls):
         return cls(super().random_unit_generator(weapons.rookie, armory.rookie), rnd.randint(5, 10), "Rookie")
