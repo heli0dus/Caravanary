@@ -55,12 +55,12 @@ class Town:
 
 real_towns_names = {
     "Aibiusa": Town("Aibiusa", "farm", "poor", 2),
-    "Zebrige": Town("Zebrige", "farm", "poor", 2),
-    "Anosi": Town("Anosi", "farm", "poor", 2),
-    "Vleles": Town("Vleles", "farm", "poor", 2),
-    "Brario": Town("Brario", "farm", "poor", 2),
-    "Strover": Town("Strover", "farm", "poor", 2),
-    "Beksburg": Town("Beksburg", "farm", "poor", 2),
-    "Zheocester": Town("Zheocester", "farm", "poor", 2),
+    "Zebrige": Town("Zebrige", "capital", "capital", 12),
+    "Anosi": Town("Anosi", "forgery", "rich", 6),
+    "Vleles": Town("Vleles", "port", "poor", 3),
+    "Brario": Town("Brario", "farm", "normal", 5),
+    "Strover": Town("Strover", "forgery", "normal", 3),
+    "Beksburg": Town("Beksburg", "port", "rich", 8),
+    "Zheocester": Town("Zheocester", "farm", "poor", 1),
 }
 

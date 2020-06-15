@@ -9,7 +9,7 @@
 #                         low:    everything
 # Defender - mercenary:   high:   hp, armor
 #                         low:    damage, evade, accuracy
-# Archer - mercenary:        high:   damage, accuracy
+# Archer - mercenary:     high:   damage, accuracy
 #                         low:    hp, armor, evade
 # Solder - mercenary:     high:   hp, accuracy
 #                         low:    damage, armor, evade
