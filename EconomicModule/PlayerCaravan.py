@@ -83,8 +83,20 @@ class PlayerCaravan:
 
     # Allows to delete animal from caravan
     def drive_out_animal(self, animal_name):
-        if animal_name in self.items_map.keys():
-            if self.items_map[animal_name] > 0
+        if animal_name in self.items_map.keys() and self.items_map[animal_name] > 0:
+            if tradeable_goods.tradeable_goods[animal_name][-2] < 0:
+                if self.caravan_capacity - tradeable_goods.tradeable_goods[animal_name][-2] <= 0:
+                    self.caravan_capacity -= tradeable_goods.tradeable_goods[animal_name][-2]
+                    self.capacity_maximum -= tradeable_goods.tradeable_goods[animal_name][-2]
+                    self.animal_size -= 1
+                    self.items_map[animal_name] -= 1
+                else:
+                        print("You can't do this, you have not enough capacity.")
+            else:
+                self.caravan_capacity -= tradeable_goods.tradeable_goods[animal_name][-2]
+                self.capacity_current -= tradeable_goods.tradeable_goods[animal_name][-2]
+                self.animal_size -= 1
+                self.items_map[animal_name] -= 1
         else:
             print("You have no such animal")
 
