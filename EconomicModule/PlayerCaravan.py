@@ -2,11 +2,12 @@ import Resources.tradeable_goods as dictionaries
 import Resources.names as names
 import Resources.tradeable_goods as tradeable_goods
 import EconomicModule.TradePoint
+import random as rnd
 
 
 class PlayerCaravan:
     name = ""               # Caravan's name given by player
-    money = 20              # Current amount of money
+    money = 0              # Current amount of money
     to_pay = 0              # Amount of money spending on caravan per day
     debt = 0                # Current money debt
     debt_inc = 0            # Multiplier applied to debt every 7 days
@@ -14,10 +15,10 @@ class PlayerCaravan:
     human_food_open = 0     # Supply of food for humans that cant be sold
     animal_food = 0         # Supply of food for animals
     animal_food_open = 0    # Supply of food for animals that cant be sold
-    caravan_capacity = 0    # Capacity of caravan, always <= 0
-    capacity_current = 5    # Shown current capacity, sum of positive numbers
+    caravan_capacity = -5    # Capacity of caravan, always <= 0
+    capacity_current = 0    # Shown current capacity, sum of positive numbers
     capacity_maximum = 5    # Shown maximum of capacity, sum of negative numbers
-    items_map = {"Silver dishes": 5,}          # Map of names and numbers of goods
+    items_map = {}          # Map of names and numbers of goods
     animal_size = 0         # Number of animals in caravan
     human_size = 1          # Number of humans in caravan (including player's character)
     mercenary_size = 0      # Number of mercenaries in caravan
@@ -308,7 +309,7 @@ class PlayerCaravan:
                             print("> You have not enough money!")
             else:
                 print("> I don't have ", goods_name, ", ask something other.")
-
+                
     def buy_multi_item(self, goods_name, point, number):
         if isinstance(point, EconomicModule.TradePoint.TradePoint):
             if goods_name in point.goods_map.keys():
@@ -348,8 +349,41 @@ class PlayerCaravan:
                     print("> You have not enough money!")
             else:
                 print("> I don't have ", goods_name, ", ask something other.")
+                
+    def fight(self, enemies, player):
+        player_in = ""
+        print("Do ypu want to fight? yes/no: ")
+        while player_in not in ["yes", "no"]:
+            player_in = input()
+            if player_in not in ["yes", "no"]:
+                print("wrong command, try again")
+            elif player_in == "yes":
+                print("You stand to defend your caravan with your mercenaries")
+                self.mercenary_set.union(player)
+            else:
+                print("You hide somewhere to protect your life")
+
+        if isinstance(enemies, set):
+            while len(self.mercenary_set.union()) > 0 and len(enemies) > 0:
+                for i in self.mercenary_set.union(enemies):
+                    if i.is_alive():
+                        if i in self.mercenary_set:
+                            i.hit(rnd.choice(tuple(enemies)))
+                        else:
+                            i.hit(rnd.choice(tuple(self.mercenary_set)))
+                for i in list(self.mercenary_set):
+                    if not i.is_alive():
+                        self.mercenary_set.remove(i)
+
+                for i in list(enemies):
+                    if not i.is_alive():
+                        enemies.remove(i)
+            return len(self.mercenary_set) > 0
+        else:
+            print("Wrong argument of enemies given")
 
 #     def caravan_move(self, target):
+# TODO      trade function
 # TODO      movement function
 # TODO      trade functions (in progress)
 # TODO      leveling
