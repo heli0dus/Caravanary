@@ -7,7 +7,7 @@ import random as rnd
 
 class PlayerCaravan:
     name = ""               # Caravan's name given by player
-    money = 0              # Current amount of money
+    money = 300              # Current amount of money
     to_pay = 0              # Amount of money spending on caravan per day
     debt = 0                # Current money debt
     debt_inc = 0            # Multiplier applied to debt every 7 days
@@ -224,8 +224,11 @@ class PlayerCaravan:
                     if point.point_type != "Mercenary Guild":
                         print("> You buying some mercenaries! It's not here!")
                     else:
-
-                    # TODO buy for mercenaries
+                        if self.money >= point.goods_map[goods_name][1]:
+                            print("Payed: ", point.goods_map[goods_name][1])
+                            self.money -= point.goods_map[goods_name][1]
+                            self.human_size += 1
+                            self.mercenary_set.add(point.goods_map[goods_name][0])
                 elif thing[0] == "animal":
                     if point.point_type != "Bestiary":
                         print("> I don't have " + goods_name + ", here isn't Bestiary!")
@@ -327,7 +330,11 @@ class PlayerCaravan:
     def buy_multi_item(self, goods_name, point, number):
         if isinstance(point, EconomicModule.TradePoint.TradePoint):
             if goods_name in point.goods_map.keys():
-                if self.money >= point.goods_map[goods_name]*number:
+                if point.point_type == "Mercenary Guild":
+                    tempint = point.goods_map[goods_name][1]
+                else:
+                    tempint = point.goods_map[goods_name]
+                if self.money >= tempint*number:
                     thing = tradeable_goods.tradeable_goods[goods_name]
                     if thing[0] == "animal_food" or thing[0] == "human_food":
                         if point.point_type == "Market":
