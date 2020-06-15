@@ -51,11 +51,13 @@ class Unit:
 
     # not straight fabric constructor using game items
     @classmethod
-    def unit_generator(cls, name=rnd.choice(names.names),
+    def unit_generator(cls,
+                       name=rnd.choice(names.names),
                        weapon=rnd.choice(tuple(weapons.weapon_dictionary)),
                        armor=rnd.choice(tuple(armory.armor_dictionary)),
                        strength=rnd.randint(1, 3),
-                       dexterity=rnd.randint(1, 3)):
+                       dexterity=rnd.randint(1, 3),
+                       ):
 
         if weapon in weapons.weapon_dictionary.keys() and \
                 armor in armory.armor_dictionary.keys() and strength > 0 and dexterity > 0:
@@ -71,10 +73,70 @@ class Unit:
             obj_evade_chance = 40 + dexterity * 5 + armor_vector[1]
             obj_armor = armor_vector[0]
 
-            return cls(obj_name, obj_hp, obj_low_dmg, obj_high_dmg,
+            return Unit(obj_name, obj_hp, obj_low_dmg, obj_high_dmg,
                        obj_armor, obj_evade_chance, obj_accuracy)
         else:
             raise AttributeError
+
+    # fabric constructor using dictionaries of items
+    @classmethod
+    def random_unit_generator(cls,
+                              weapon_dict=weapons.weapon_dictionary,
+                              armor_dict=armory.armor_dictionary,
+                              name_dict=names.names,
+
+                              strength=rnd.randint(1, 3),
+                              dexterity=rnd.randint(1, 3),
+                              ):
+        name = rnd.choice(name_dict)
+        weapon = rnd.choice(tuple(weapon_dict))
+        armor = rnd.choice(tuple(armor_dict))
+        if weapon in weapon_dict.keys() and \
+                armor in armor_dict.keys() and strength > 0 and dexterity > 0:
+
+            weapon_vector = weapon_dict[weapon]
+            armor_vector = armor_dict[armor]
+
+            obj_name = name
+            obj_hp = 20 + 5 * strength
+            obj_low_dmg = 1 + strength + weapon_vector[0]
+            obj_high_dmg = 2 + strength * 2 + weapon_vector[1]
+            obj_accuracy = dexterity * 5 + weapon_vector[2]
+            obj_evade_chance = 40 + dexterity * 5 + armor_vector[1]
+            obj_armor = armor_vector[0]
+
+            return Unit(obj_name, obj_hp, obj_low_dmg, obj_high_dmg, obj_armor, obj_evade_chance, obj_accuracy)
+        else:
+            raise AttributeError
+
+    # bandits generators
+    @classmethod
+    def thief_generator(cls):
+        return cls.random_unit_generator(weapons.thief, armory.thief, "thief")
+
+    @classmethod
+    def pickpocket_generator(cls):
+        return cls.random_unit_generator(weapons.pickpocket, armory.pickpocket, "pickpocket")
+
+    @classmethod
+    def archer_generator(cls):
+        return cls.random_unit_generator(weapons.archer, armory.archer, "archer")
+
+    @classmethod
+    def bouncer_generator(cls):
+        return cls.random_unit_generator(weapons.bouncer, armory.bouncer, "bouncer")
+
+    @classmethod
+    def deserter_generator(cls):
+        return cls.random_unit_generator(weapons.deserter, armory.deserter, "desrter")
+
+    @classmethod
+    def killer_generator(cls):
+        return cls.random_unit_generator(weapons.killer, armory.killer, "killer")
+
+    @classmethod
+    def leader_generator(cls):
+        return cls.random_unit_generator(weapons.leader, armory.leader, "bandit leader")
 
 
 class Player(Unit):
@@ -102,7 +164,8 @@ class Player(Unit):
     def set_clothes(self, armor):
         if armor in armory.armor_dictionary.keys():
             self.armor = self.armor - armory.armor_dictionary[self.clothes][0] + armory.armor_dictionary[armor][0]
-            self.evade_chance = self.armor - armory.armor_dictionary[self.clothes][1] + armory.armor_dictionary[armor][1]
+            self.evade_chance = self.armor - armory.armor_dictionary[self.clothes][1] + armory.armor_dictionary[armor][
+                1]
 
             self.clothes = armor
 
@@ -119,3 +182,39 @@ class Player(Unit):
 
     def inc_char(self, num=1):
         self.charisma += num
+
+
+class Mercenary(Unit):
+
+    def __init__(self, unit, salary):
+        super().__init__(unit.name, unit.hp, unit.low_dmg, unit.high_dmg, unit.armor, unit.evade_chance,
+                                        unit.accuracy)
+        self.salary = salary
+
+    @classmethod
+    def rookie_generator(cls):
+        return cls(super().random_unit_generator(weapons.rookie, armory.rookie), rnd.randint(5, 10))
+
+    @classmethod
+    def defender_generator(cls):
+        return cls(super().random_unit_generator(weapons.defender, armory.defender), rnd.randint(5, 10))
+
+    @classmethod
+    def soldier_generator(cls):
+        return cls(super().random_unit_generator(weapons.soldier, armory.soldier), rnd.randint(5, 10))
+
+    @classmethod
+    def guardian_generator(cls):
+        return cls(super().random_unit_generator(weapons.guardian, armory.guardian), rnd.randint(5, 10))
+
+    @classmethod
+    def assassin_generator(cls):
+        return cls(super().random_unit_generator(weapons.assassin, armory.assassin), rnd.randint(5, 10))
+
+    @classmethod
+    def hero_generator(cls):
+        return cls(super().random_unit_generator(weapons.hero, armory.hero), rnd.randint(5, 10))
+
+    @classmethod
+    def ultimate_generator(cls):
+        return cls(super().random_unit_generator(weapons.ultimate, armory.ultimate), rnd.randint(5, 10))
