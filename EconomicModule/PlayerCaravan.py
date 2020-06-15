@@ -1,6 +1,7 @@
 import Resources.tradeable_goods as dictionaries
 import Resources.names as names
 import Resources.animals
+import Resources.human_food
 import Resources.tradeable_goods as tradeable_goods
 import EconomicModule.TradePoint
 import random as rnd
@@ -78,7 +79,6 @@ class PlayerCaravan:
     # TODO /help message
     # TODO daily update method
     # TODO fire mercenary
-    # TODO open food method
 
     # Allows to delete animal from caravan
     def drive_out_animal(self, animal_name):
@@ -125,6 +125,33 @@ class PlayerCaravan:
         else:
             print("This is not an animal")
 
+    def open_human_food(self, need):
+        flag = False
+        while not flag:
+            for i in self.items_map:
+                if i[0] == "human_food" and self.items_map[i] > 0:
+                    if i[1] == need:
+                        self.human_food_open += need
+                        self.items_map[i] -= 1
+                        flag = True
+                    else:
+                        need += 1
+        if not flag:
+            print("You don't have enough food.")
+
+    def open_animal_food(self, need):
+        flag = False
+        while not flag:
+            for i in self.items_map:
+                if i[0] == "animal_food" and self.items_map[i] > 0:
+                    if i[1] == need:
+                        self.animal_food_open += need
+                        self.items_map[i] -= 1
+                        flag = True
+                    else:
+                        need += 1
+        if not flag:
+            print("You don't have enough food.")
 
 #   Function to turn goods into money by goods_name or character name as goods_name
     def sell_item(self, goods_name, point):
