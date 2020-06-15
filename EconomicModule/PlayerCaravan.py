@@ -227,8 +227,11 @@ class PlayerCaravan:
                         if self.money >= point.goods_map[goods_name][1]:
                             print("Payed: ", point.goods_map[goods_name][1])
                             self.money -= point.goods_map[goods_name][1]
+                            self.mercenary_size += 1
+                            self.to_pay += point.goods_map[goods_name][0].salary
                             self.human_size += 1
                             self.mercenary_set.add(point.goods_map[goods_name][0])
+                            del point.goods_map[goods_name]
                 elif thing[0] == "animal":
                     if point.point_type != "Bestiary":
                         print("> I don't have " + goods_name + ", here isn't Bestiary!")

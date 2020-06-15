@@ -1,7 +1,11 @@
 from Resources import animal_food, animals, armory, hireable, human_food, luxury, weapons
 
 tradeable_goods = {
-
+ "1": ("hireable", 0),
+ "2": ("hireable", 0),
+ "3": ("hireable", 0),
+ "4": ("hireable", 0),
+ "5": ("hireable", 0),
 }
 
 # Reminder:
