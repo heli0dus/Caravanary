@@ -31,8 +31,6 @@ class Town:
         print("You arrived into town named " + self.name)
 
     def print_points(self):
-
-        # TODO for mercenaries
         for i in range(len(self.points)):
             print(self.points[i], '\n')
 

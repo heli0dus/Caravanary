@@ -3,10 +3,12 @@ import Resources.names as names
 import Resources.tradeable_goods as tradeable_goods
 import EconomicModule.TradePoint
 import random as rnd
+import Unit.Unit
 
 
 class PlayerCaravan:
     name = ""               # Caravan's name given by player
+    player_unit = Unit.Unit.Player()     # Player Unit
     money = 300              # Current amount of money
     to_pay = 0              # Amount of money spending on caravan per day
     debt = 0                # Current money debt
@@ -64,23 +66,27 @@ class PlayerCaravan:
             print("Your inventory is empty.")
 
     # Shows set of mercenarys
-    # def caravan_get_mercenarys(self):
-
-    # TODO printing mercenaries set
+    def get_mercenarys(self):
+        if self.mercenary_size > 0:
+            for i in self.mercenary_set:
+                i.print()
+        else:
+            print("You don't have any mercenaries.")
     # TODO game start function
     # TODO player control functions
     # TODO /help message
     # TODO daily update method
     # TODO fire mercenary
+    # TODO open food method
     # TODO drive the animal away
     # TODO slaughter an animal
 
     # Allows to delete animal from caravan
-    # def drive_out_animal(self, animal_name):
-    #     if animal_name in self.items_map.keys():
-    #         if self.items_map[]
-    #     else:
-    #         print("You have no such animal")
+    def drive_out_animal(self, animal_name):
+        if animal_name in self.items_map.keys():
+            if self.items_map[animal_name] > 0
+        else:
+            print("You have no such animal")
 
 #   Function to turn goods into money by goods_name or character name as goods_name
     def sell_item(self, goods_name, point):
