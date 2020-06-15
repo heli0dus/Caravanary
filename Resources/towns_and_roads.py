@@ -21,17 +21,6 @@ point_type = (
     # "Slave Market",
 )
 
-real_towns_names = {
-    "Aibiusa": Town.Town("Aibiusa", "farm", "poor", 2),
-    "Zebrige": Town.Town("Zebrige", "farm", "poor", 2),
-    "Anosi": Town.Town("Anosi", "farm", "poor", 2),
-    "Vleles": Town.Town("Vleles", "farm", "poor", 2),
-    "Brario": Town.Town("Brario", "farm", "poor", 2),
-    "Strover": Town.Town("Strover", "farm", "poor", 2),
-    "Beksburg": Town.Town("Beksburg", "farm", "poor", 2),
-    "Zheocester": Town.Town("Zheocester", "farm", "poor", 2),
-}
-
 towns_names = (
     "Aibiusa",
     "Zebrige",

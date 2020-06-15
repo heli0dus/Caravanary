@@ -1,5 +1,6 @@
 from Resources import towns_and_roads, human_food, armory, weapons, animals, luxury, hireable, slaves
 from Resources import animal_food, animals, armory, hireable, human_food, luxury, weapons
+import EconomicModule.Town as Town
 import random as random
 
 

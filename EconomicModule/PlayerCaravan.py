@@ -7,7 +7,7 @@ import EconomicModule.TradePoint
 import random as rnd
 import Unit.Unit
 import Resources.towns_and_roads
-import EconomicModule.Town
+import EconomicModule.Town as Town
 
 
 class PlayerCaravan:
@@ -486,8 +486,8 @@ class PlayerCaravan:
             print("Wrong argument of enemies given")
 
     def caravan_move(self, target):
-        now = EconomicModule.Town.get_town_index(Resources.towns_and_roads.real_towns_names[self.location])
-        target = EconomicModule.Town.get_town_index(Resources.towns_and_roads.real_towns_names[target])
+        now = EconomicModule.Town.get_town_index(Town.real_towns_names[self.location])
+        target = EconomicModule.Town.get_town_index(Town.real_towns_names[target])
         if Resources.towns_and_roads.roadsMatrix[now][target] > 0:
             self.location = EconomicModule.Town.town_by_index(target).name
             return Resources.towns_and_roads.roadsMatrix[now][target]
