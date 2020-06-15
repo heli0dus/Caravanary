@@ -1,9 +1,13 @@
 import Resources.tradeable_goods as dictionaries
 import Resources.names as names
+import Resources.animals
+import Resources.human_food
 import Resources.tradeable_goods as tradeable_goods
 import EconomicModule.TradePoint
 import random as rnd
 import Unit.Unit
+import Resources.towns_and_roads
+import EconomicModule.Town
 
 
 class PlayerCaravan:
@@ -25,7 +29,7 @@ class PlayerCaravan:
     human_size = 1          # Number of humans in caravan (including player's character)
     mercenary_size = 0      # Number of mercenaries in caravan
     mercenary_set = set()   # Set of mercenaries
-    location = "One"           # Name of current location
+    location = "Aibiusa"           # Name of current location
     # employee_size = 0       # Number of employee in caravan
     # employee_set = set()    # Set of employee
     # worker_size = 0         # Number of slaves-workers in caravan
@@ -83,16 +87,79 @@ class PlayerCaravan:
     # TODO player control functions
     # TODO /help message
     # TODO daily update method
-    # TODO open food method
-    # TODO drive the animal away
-    # TODO slaughter an animal
 
     # Allows to delete animal from caravan
     def drive_out_animal(self, animal_name):
-        if animal_name in self.items_map.keys():
-            if self.items_map[animal_name] > 0
+        if animal_name in Resources.animals.animals_dictionary:
+            if animal_name in self.items_map.keys() and self.items_map[animal_name] > 0:
+                if tradeable_goods.tradeable_goods[animal_name][-2] < 0:
+                    if self.caravan_capacity - tradeable_goods.tradeable_goods[animal_name][-2] <= 0:
+                        self.caravan_capacity -= tradeable_goods.tradeable_goods[animal_name][-2]
+                        self.capacity_maximum -= tradeable_goods.tradeable_goods[animal_name][-2]
+                        self.animal_size -= 1
+                        self.items_map[animal_name] -= 1
+                    else:
+                            print("You can't do this, you have not enough capacity.")
+                else:
+                    self.caravan_capacity -= tradeable_goods.tradeable_goods[animal_name][-2]
+                    self.capacity_current -= tradeable_goods.tradeable_goods[animal_name][-2]
+                    self.animal_size -= 1
+                    self.items_map[animal_name] -= 1
+            else:
+                print("You have no such animal")
         else:
-            print("You have no such animal")
+            print("This is not an animal")
+
+    def slautgher_animal(self, animal_name):
+        if animal_name in Resources.animals.animals_dictionary:
+            if animal_name in self.items_map.keys() and self.items_map[animal_name] > 0:
+                if tradeable_goods.tradeable_goods[animal_name][-2] < 0:
+                    if self.caravan_capacity - tradeable_goods.tradeable_goods[animal_name][-2] <= 0:
+                        self.caravan_capacity -= tradeable_goods.tradeable_goods[animal_name][-2]
+                        self.capacity_maximum -= tradeable_goods.tradeable_goods[animal_name][-2]
+                        self.human_food_open += tradeable_goods.tradeable_goods[animal_name][2]
+                        self.animal_size -= 1
+                        self.items_map[animal_name] -= 1
+                    else:
+                            print("You can't do this, you have not enough capacity.")
+                else:
+                    self.caravan_capacity -= tradeable_goods.tradeable_goods[animal_name][-2]
+                    self.capacity_current -= tradeable_goods.tradeable_goods[animal_name][-2]
+                    self.human_food_open += tradeable_goods.tradeable_goods[animal_name][2]
+                    self.animal_size -= 1
+                    self.items_map[animal_name] -= 1
+            else:
+                print("You have no such animal")
+        else:
+            print("This is not an animal")
+
+    def open_human_food(self, need):
+        flag = False
+        while not flag:
+            for i in self.items_map:
+                if i[0] == "human_food" and self.items_map[i] > 0:
+                    if i[1] == need:
+                        self.human_food_open += need
+                        self.items_map[i] -= 1
+                        flag = True
+                    else:
+                        need += 1
+        if not flag:
+            print("You don't have enough food.")
+
+    def open_animal_food(self, need):
+        flag = False
+        while not flag:
+            for i in self.items_map:
+                if i[0] == "animal_food" and self.items_map[i] > 0:
+                    if i[1] == need:
+                        self.animal_food_open += need
+                        self.items_map[i] -= 1
+                        flag = True
+                    else:
+                        need += 1
+        if not flag:
+            print("You don't have enough food.")
 
 #   Function to turn goods into money by goods_name or character name as goods_name
     def sell_item(self, goods_name, point):
@@ -418,7 +485,14 @@ class PlayerCaravan:
         else:
             print("Wrong argument of enemies given")
 
-#     def caravan_move(self, target):
-# TODO      movement function
+    def caravan_move(self, target):
+        now = EconomicModule.Town.get_town_index(Resources.towns_and_roads.real_towns_names[self.location])
+        target = EconomicModule.Town.get_town_index(Resources.towns_and_roads.real_towns_names[target])
+        if Resources.towns_and_roads.roadsMatrix[now][target] > 0:
+            self.location = EconomicModule.Town.town_by_index(target).name
+            return Resources.towns_and_roads.roadsMatrix[now][target]
+        else:
+            print("There is no road to this town.")
+
 # TODO      leveling
 # TODO      equipment
