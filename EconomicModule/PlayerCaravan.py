@@ -67,7 +67,6 @@ class PlayerCaravan:
     # def caravan_get_mercenarys(self):
 
     # TODO printing mercenaries set
-
     # TODO game start function
     # TODO player control functions
     # TODO /help message
@@ -222,7 +221,10 @@ class PlayerCaravan:
             if goods_name in point.goods_map.keys():
                 thing = tradeable_goods.tradeable_goods[goods_name]
                 if thing[0] == "hireable":
-                    print("You buying some mercenaries!")
+                    if point.point_type != "Mercenary Guild":
+                        print("> You buying some mercenaries! It's not here!")
+                    else:
+
                     # TODO buy for mercenaries
                 elif thing[0] == "animal":
                     if point.point_type != "Bestiary":

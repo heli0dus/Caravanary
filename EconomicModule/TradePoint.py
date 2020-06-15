@@ -123,14 +123,13 @@ class TradePoint:
                 self.specialization_multipliers[4] * self.richness_multipliers[4] * random_multiplier // 1)
                 # print("Added: ", list(luxury.luxury_dictionary.keys())[randnum - 1])  # Temporal
             if point_type == "Mercenary Guild":
-                randnum = random.randint(1, hireable.hireable_variability)
-                # print("(", end="")  # Temporal
-                # print(randnum, end="")  # Temporal
-                # print(") ", end="")  # Temporal
-                # for hireable
-                self.goods_map[list(hireable.hireable_dictionary.keys())[randnum - 1]] = int(\
-                hireable.hireable_dictionary[list(hireable.hireable_dictionary.keys())[randnum - 1]][-1] * \
-                self.specialization_multipliers[6] * self.richness_multipliers[6] * random_multiplier // 1)
+                # TODO change it(?)
+
+                # randnum = random.randint(1, hireable.hireable_variability)
+                # # for hireable
+                # self.goods_map[list(hireable.hireable_dictionary.keys())[randnum - 1]] = int(\
+                # hireable.hireable_dictionary[list(hireable.hireable_dictionary.keys())[randnum - 1]][-1] * \
+                # self.specialization_multipliers[6] * self.richness_multipliers[6] * random_multiplier // 1)
                 # print("Added: ", list(hireable.hireable_dictionary.keys())[randnum - 1])  # Temporal
 
     # if point_type == "Slave Market":

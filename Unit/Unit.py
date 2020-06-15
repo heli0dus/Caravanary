@@ -191,6 +191,7 @@ class Mercenary(Unit):
                                         unit.accuracy)
         self.salary = salary
 
+    # TODO change salary
     @classmethod
     def rookie_generator(cls):
         return cls(super().random_unit_generator(weapons.rookie, armory.rookie), rnd.randint(5, 10))
