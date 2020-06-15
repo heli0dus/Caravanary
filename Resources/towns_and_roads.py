@@ -2,8 +2,10 @@ import EconomicModule.Town as Town
 
 specialization_type = {
     # human_food(0), animal_food(1), weapon(2), armor(3), luxury(4), slaves(5), hireable(6), animals(7)
-    "farm": (1, 1, 1, 1, 1, 1, 1, 1),
-    "forgery": (1, 1, 1, 1, 1, 1, 1, 1),
+    "farm": (0.8, 0.8, 1.2, 1.4, 2, 0, 1.7, 0.9),
+    "forgery": (1, 1.2, 0.9, 0.8, 1.5, 0, 1.4, 1.2),
+    "Capital": (1.5, 1.3, 1.2, 1.2, 1.2, 0, 1, 1.4),
+    "Port": (1, 1, 1.2, 1, 1.3, 0, 1.2, 1.3),
 }
 
 richness_type = {
