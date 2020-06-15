@@ -35,8 +35,9 @@ def det_dict_type(dict_name):
 def collect_all_goods():
     for i in all_dictionaries:
         for j in i.keys():
-            obj_type = det_dict_type(i)
-            stats_list = [obj_type]
-            for k in i[j]:
-                stats_list.append(k)
-            tradeable_goods[j] = stats_list
+            if j != "none":
+                obj_type = det_dict_type(i)
+                stats_list = [obj_type]
+                for k in i[j]:
+                    stats_list.append(k)
+                tradeable_goods[j] = stats_list
