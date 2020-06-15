@@ -22,10 +22,17 @@ class Town:
         self.points = []                        # list of town TradePoint's
         for i in range(size):
             randnum = random.randint(1, 5)
-            print('\n' + towns_and_roads.point_type[randnum-1] + ':')
+            # print('\n' + towns_and_roads.point_type[randnum-1] + ':')
             a = TradePoint.TradePoint(self, towns_and_roads.point_type[randnum-1])
             self.points.append(a)
         # self.connections = connections          # list of connected town's
+
+    def arrival(self):
+        print("You arrived into town named " + self.name)
+
+    def print_points(self):
+        for i in range(len(self.points)):
+            print(self.points[i], '\n')
 
     # # Returns(dict String:int) dictionary of towns and distances to them which you can get from here
     # def get_connections(self):
@@ -40,11 +47,6 @@ class Town:
     #     return towns_and_roads.roadsMatrix[get_town_index(self.name)][get_town_index(i)]
 
     # Gives message about town you arrived to
-    def arrival(self):
-        print("You arrived into town named " + self.name)
 
-    def print_points(self):
-        for i in range(len(self.points)):
-            print(self.points[i], '\n')
 
 

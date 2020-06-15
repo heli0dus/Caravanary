@@ -4,10 +4,16 @@ tradeable_goods = {
 
 }
 
+# Reminder:
+# [0]  - dicttype
+# [-1] - cost
+# [-2] - size
+# [-3] - description
+
 all_dictionaries = (
     animal_food.animals_food_dictionary,    # 1
     animals.animals_dictionary,             # 7
-    armory.armor_variability,               # 3
+    armory.armor_dictionary,               # 3
     hireable.hireable_dictionary,           # 6
     human_food.human_food_dictionary,       # 0
     luxury.luxury_dictionary,               # 4
