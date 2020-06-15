@@ -1,7 +1,11 @@
 luxury_dictionary = {
-    # ?, cost
-    "Silver dishes": (0, 20),
-    "Aroma candles": (0, 15)
+    # description, size, cost
+    "Silver dishes": ("", 1, 20),
+    "Aroma candles": ("", 1, 15),
 }
 
 luxury_variability = len(luxury_dictionary)
+
+# TODO size
+# TODO descriptions
+# TODO more goods

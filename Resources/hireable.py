@@ -1,7 +1,11 @@
 hireable_dictionary = {
-    # ?, cost
-    "Week Employee": (0, 10),
-    "Mercenary-beginner": (0, 15)
+    # ?, description, size,  cost
+    # "Week Employee": (0, 10),
+    "Rookie": ("", 0, 15),
+    "Defender": ("", 0, 30),
 }
 
 hireable_variability = len(hireable_dictionary)
+
+# TODO descriptions
+# TODO more goods
