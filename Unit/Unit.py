@@ -186,36 +186,44 @@ class Player(Unit):
 
 class Mercenary(Unit):
 
-    def __init__(self, unit, salary):
+    def __init__(self, unit, salary, type):
         super().__init__(unit.name, unit.hp, unit.low_dmg, unit.high_dmg, unit.armor, unit.evade_chance,
                                         unit.accuracy)
         self.salary = salary
+        self.type = type
 
     # TODO change salary
     @classmethod
     def rookie_generator(cls):
-        return cls(super().random_unit_generator(weapons.rookie, armory.rookie), rnd.randint(5, 10))
+        return cls(super().random_unit_generator(weapons.rookie, armory.rookie), rnd.randint(5, 10), "Rookie")
 
     @classmethod
     def defender_generator(cls):
-        return cls(super().random_unit_generator(weapons.defender, armory.defender), rnd.randint(5, 10))
+        return cls(super().random_unit_generator(weapons.defender, armory.defender), rnd.randint(5, 10), "Defender")
 
     @classmethod
     def soldier_generator(cls):
-        return cls(super().random_unit_generator(weapons.soldier, armory.soldier), rnd.randint(5, 10))
+        return cls(super().random_unit_generator(weapons.soldier, armory.soldier), rnd.randint(5, 10), "Soldier")
 
     @classmethod
     def guardian_generator(cls):
-        return cls(super().random_unit_generator(weapons.guardian, armory.guardian), rnd.randint(5, 10))
+        return cls(super().random_unit_generator(weapons.guardian, armory.guardian), rnd.randint(5, 10), "Guardian")
 
     @classmethod
     def assassin_generator(cls):
-        return cls(super().random_unit_generator(weapons.assassin, armory.assassin), rnd.randint(5, 10))
+        return cls(super().random_unit_generator(weapons.assassin, armory.assassin), rnd.randint(5, 10), "Assassin")
 
     @classmethod
     def hero_generator(cls):
-        return cls(super().random_unit_generator(weapons.hero, armory.hero), rnd.randint(5, 10))
+        return cls(super().random_unit_generator(weapons.hero, armory.hero), rnd.randint(5, 10), "Hero")
 
     @classmethod
     def ultimate_generator(cls):
-        return cls(super().random_unit_generator(weapons.ultimate, armory.ultimate), rnd.randint(5, 10))
+        return cls(super().random_unit_generator(weapons.ultimate, armory.ultimate), rnd.randint(5, 10), "Ultimate")
+
+    def print(self):
+        print(self.type, self.name)
+        self.print_attack_stats()
+        self.print_living_stats()
+        print("salary:", self.salary)
+        print()
