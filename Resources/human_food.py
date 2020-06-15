@@ -14,4 +14,3 @@ human_food_variability = len(human_food_dictionary)
 # cost - cost N money by default
 
 # TODO descriptions
-# TODO more goods

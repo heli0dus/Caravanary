@@ -6,68 +6,83 @@ armor_dictionary = {
     "Fortified leather armor": (8, -5, "", 1, 30),
     "Steel armor": (12, -15, "", 1, 45),
     "Valit armor": (18, -10, "", 1, 120),
+    "Plate vest": (20, -20, "", 1, 150),
+    "Kaom's Heart": (30, -30, "", 1, 300),
     "none": (0, 0, "", 0, 0),
 }
 # mercenaries
 rookie = {
-    "light leather armor": (3, -2, 15)
+    "Light leather armor": (3, -2, "", 1, 15),
 }
 
 defender = {
-    "light leather armor": (3, -2, 15)
+    "Iron armor": (10, -10, "", 1, 30),
 }
 
 soldier = {
-    "light leather armor": (3, -2, 15)
-
+    "Iron armor": (10, -10, "", 1, 30),
+    "Fortified leather armor": (8, -5, "", 1, 30),
 }
 
 guardian = {
-    "light leather armor": (3, -2, 15)
+    "Steel armor": (12, -15, "", 1, 45),
+    "Iron armor": (10, -10, "", 1, 30),
+    "Valit armor": (18, -10, "", 1, 120),
 }
 
 assassin = {
-    "light leather armor": (3, -2, 15)
+    "Iron armor": (10, -10, "", 1, 30),
+    "Fortified leather armor": (8, -5, "", 1, 30),
 }
 
 hero = {
-    "light leather armor": (3, -2, 15)
+    "Steel armor": (12, -15, "", 1, 45),
+    "Valit armor": (18, -10, "", 1, 120),
+    "Plate vest": (20, -20, "", 1, 150),
 }
 
 ultimate = {
-    "light leather armor": (3, -2, 15)
+    "Fortified leather armor": (8, -5, "", 1, 30),
+    "Valit armor": (18, -10, "", 1, 120),
+    "Plate vest": (20, -20, "", 1, 150),
+    "Kaom's Heart": (30, -30, "", 1, 300),
 }
 
 # bandits
 thief = {
-
+    "Light leather armor": (3, -2, "", 1, 15),
 }
 
 pickpocket = {
-
+    "Light leather armor": (3, -2, "", 1, 15),
+    "Leather armor": (5, -5, "", 1, 20),
 }
 
 archer = {
-
+    "Leather armor": (5, -5, "", 1, 20),
 }
 
 bouncer = {
-
+    "Iron armor": (10, -10, "", 1, 30),
+    "Fortified leather armor": (8, -5, "", 1, 30),
 }
 
 deserter = {
-
+    "Iron armor": (10, -10, "", 1, 30),
+    "Steel armor": (12, -15, "", 1, 45),
 }
 
 killer = {
-
+    "Fortified leather armor": (8, -5, "", 1, 30),
+    "Valit armor": (18, -10, "", 1, 120),
 }
 
 leader = {
-
+    "Steel armor": (12, -15, "", 1, 45),
+    "Valit armor": (18, -10, "", 1, 120),
+    "Plate vest": (20, -20, "", 1, 150),
 }
 
 armor_variability = len(armor_dictionary)
 
 # TODO descriptions
-# TODO more goods

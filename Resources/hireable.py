@@ -15,4 +15,3 @@ hireable_dictionary = {
 hireable_variability = len(hireable_dictionary)
 
 # TODO descriptions
-# TODO more goods

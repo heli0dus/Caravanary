@@ -13,4 +13,3 @@ luxury_dictionary = {
 luxury_variability = len(luxury_dictionary)
 
 # TODO descriptions
-# TODO more goods
