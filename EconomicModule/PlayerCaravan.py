@@ -6,6 +6,8 @@ import Resources.tradeable_goods as tradeable_goods
 import EconomicModule.TradePoint
 import random as rnd
 import Unit.Unit
+import Resources.towns_and_roads
+import EconomicModule.Town
 
 
 class PlayerCaravan:
@@ -27,7 +29,7 @@ class PlayerCaravan:
     human_size = 1          # Number of humans in caravan (including player's character)
     mercenary_size = 0      # Number of mercenaries in caravan
     mercenary_set = set()   # Set of mercenaries
-    location = "One"           # Name of current location
+    location = "Aibiusa"           # Name of current location
     # employee_size = 0       # Number of employee in caravan
     # employee_set = set()    # Set of employee
     # worker_size = 0         # Number of slaves-workers in caravan
@@ -477,7 +479,14 @@ class PlayerCaravan:
         else:
             print("Wrong argument of enemies given")
 
-#     def caravan_move(self, target):
-# TODO      movement function
+    def caravan_move(self, target):
+        now = EconomicModule.Town.get_town_index(Resources.towns_and_roads.real_towns_names[self.location])
+        target = EconomicModule.Town.get_town_index(Resources.towns_and_roads.real_towns_names[target])
+        if Resources.towns_and_roads.roadsMatrix[now][target] > 0:
+            self.location = EconomicModule.Town.town_by_index(target).name
+            return Resources.towns_and_roads.roadsMatrix[now][target]
+        else:
+            print("There is no road to this town.")
+
 # TODO      leveling
 # TODO      equipment

@@ -34,6 +34,14 @@ class Town:
         for i in range(len(self.points)):
             print(self.points[i], '\n')
 
+    # def re_generate_points(self):
+    #
+    #     for i in range(size):
+    #         randnum = random.randint(1, 5)
+    #         # print('\n' + towns_and_roads.point_type[randnum-1] + ':')
+    #         a = TradePoint.TradePoint(self, towns_and_roads.point_type[randnum-1])
+    #         self.points.append(a)
+
     # # Returns(dict String:int) dictionary of towns and distances to them which you can get from here
     # def get_connections(self):
     #     result = {}
