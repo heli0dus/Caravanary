@@ -383,10 +383,6 @@ class PlayerCaravan:
             print("Wrong argument of enemies given")
 
 #     def caravan_move(self, target):
-# TODO      trade function
 # TODO      movement function
-# TODO      trade functions (in progress)
 # TODO      leveling
 # TODO      equipment
-
-

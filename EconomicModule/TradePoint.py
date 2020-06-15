@@ -153,6 +153,3 @@ class TradePoint:
 
     def __str__(self):
         return self.point_type + ":" + '\n' + self.ret_goods_map()
-
-    # TODO      refactor imports
-    # TODO      change
