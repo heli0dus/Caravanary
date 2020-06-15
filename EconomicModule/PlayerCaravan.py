@@ -80,8 +80,6 @@ class PlayerCaravan:
     # TODO fire mercenary
     # TODO open food method
 
-    # TODO slaughter an animal
-
     # Allows to delete animal from caravan
     def drive_out_animal(self, animal_name):
         if animal_name in Resources.animals.animals_dictionary:
