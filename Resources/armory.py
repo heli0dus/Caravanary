@@ -1,7 +1,11 @@
 armor_dictionary = {
     # armor, evade chance, description, size, cost
-    "leather armor": (5, -5, "", 1, 20),
-    "iron armor": (10, -10, "", 1, 30),
+    "Light leather armor": (3, -2, "", 1, 15),
+    "Leather armor": (5, -5, "", 1, 20),
+    "Iron armor": (10, -10, "", 1, 30),
+    "Fortified leather armor": (8, -5, "", 1, 30),
+    "Steel armor": (12, -15, "", 1, 45),
+    "Valit armor": (18, -10, "", 1, 120),
     "none": (0, 0, "", 0, 0),
 }
 # mercenaries

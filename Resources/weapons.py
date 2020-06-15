@@ -1,8 +1,11 @@
 weapon_dictionary = {
     # lower damage, higher damage, accuracy, description, size, cost
-    "axe": (10, 20, 20, "", 1, 20),
-    "sword": (7, 15, 30, "", 1, 20),
-    "light axe": (5, 15, 40, "", 1, 20),
+    "Axe": (10, 20, 20, "", 1, 30),
+    "Sword": (7, 15, 30, "", 1, 25),
+    "Light axe": (5, 15, 40, "", 1, 20),
+    "Dagger": (3, 10, 50, "", 1, 15),
+    "Spear": (5, 20, 45, "", 1, 50),
+    "Halberd": (15, 25, 35, "", 1, 50),
     "none": (0, 0, 0, "", 0, 0)
 }
 
