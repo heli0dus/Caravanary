@@ -66,10 +66,17 @@ class PlayerCaravan:
     # Shows set of mercenarys
     # def caravan_get_mercenarys(self):
     # TODO printing mercenaries list
+
+    # TODO game start function
+    # TODO player control functions
+    # TODO /help message
+    # TODO daily update method
     # TODO fire mercenary
     # TODO drive the animal away
     # TODO slaughter an animal
 
+    # Allows to delete animal from caravan
+    # def drive_out_animal(self, animal_name):
 
 #   Function to turn goods into money by goods_name or character name as goods_name
     def sell_item(self, goods_name, point):
