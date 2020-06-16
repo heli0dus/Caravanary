@@ -236,7 +236,7 @@ name = input('Firstly, how do you want to name your caravan? ')
 confirm = input("Do you really want to name your caravan " + name + "? Y/n ")
 
 while confirm != "Y":
-    if caravan != "n":
+    if confirm != "n":
         confirm = input("Wrong command. Try again Y/n")
     else:
         name = input("Ok, enter another name:")

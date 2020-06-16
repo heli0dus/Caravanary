@@ -120,7 +120,7 @@ class Unit:
 
     @classmethod
     def archer_generator(cls):
-        return cls.random_unit_generator(weapons.archer, armory.archer, ("archer")
+        return cls.random_unit_generator(weapons.archer, armory.archer, ("archer"))
 
     @classmethod
     def bouncer_generator(cls):
