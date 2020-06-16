@@ -236,7 +236,7 @@ trade_choose_commands = {
 }
 
 trade_commands = {
-    "what you have": print(caravan.point),
+    "what you have": lambda: print(caravan.point),
     "give me...": buy_something,
     "do you want...": sell_something,
     "nothing interesting": lambda: caravan.set_commands(trade_choose_commands),
