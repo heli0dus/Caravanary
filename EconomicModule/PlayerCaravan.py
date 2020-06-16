@@ -164,9 +164,9 @@ class PlayerCaravan:
 
             for i in self.items_map:
                 if tradeable_goods.tradeable_goods[i][0] == "human_food" and self.items_map[i] > 0:
-                    if opened > need:
+                    if opened >= need:
                         flag = True
-                    if tradeable_goods.tradeable_goods[i][1] <= opened - need:
+                    if tradeable_goods.tradeable_goods[i][1] <= need - opened:
                         self.human_food_open += tradeable_goods.tradeable_goods[i][1]
                         self.human_food -= tradeable_goods.tradeable_goods[i][1]
                         opened += tradeable_goods.tradeable_goods[i][1]
@@ -176,14 +176,14 @@ class PlayerCaravan:
                 flag_feeded = False
                 for i in self.items_map:
                     if tradeable_goods.tradeable_goods[i][0] == "human_food" and self.items_map[i] > 0:
-                        if tradeable_goods.tradeable_goods[i][1] >= opened - need:
+                        if tradeable_goods.tradeable_goods[i][1] >= need - opened:
                             self.human_food_open += tradeable_goods.tradeable_goods[i][1]
                             self.human_food -= tradeable_goods.tradeable_goods[i][1]
                             opened += tradeable_goods.tradeable_goods[i][1]
                             self.items_map[i] -= 1
                             flag_feeded = True
 
-            if opened > need:
+            if opened >= need:
                 flag = True
 
             if not flag_feeded:
