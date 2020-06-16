@@ -173,6 +173,8 @@ class PlayerCaravan:
                         self.capacity_current -= tradeable_goods.tradeable_goods[i][-2]
                         opened += tradeable_goods.tradeable_goods[i][1]
                         self.items_map[i] -= 1
+                        # if self.items_map[i] == 0:
+                        #     del self.items_map[i]
                         flag_take_more = True
             if not flag_take_more:
                 flag_feeded = False
@@ -215,6 +217,8 @@ class PlayerCaravan:
                         self.capacity_current -= tradeable_goods.tradeable_goods[i][-2]
                         opened += tradeable_goods.tradeable_goods[i][1]
                         self.items_map[i] -= 1
+                        if self.items_map[i] == 0:
+                            del self.items_map[i]
                         flag_take_more = True
             if not flag_take_more:
                 flag_feeded = False
@@ -261,6 +265,8 @@ class PlayerCaravan:
                             self.money += earned
                             self.animal_size -= 1
                             self.items_map[goods_name] -= 1
+                            if self.items_map[goods_name] == 0:
+                                del self.items_map[goods_name]
                 elif thing[0] == "armor":
                     if point.point_type != "Armory":
                         print("I won't buy this.")
@@ -274,6 +280,8 @@ class PlayerCaravan:
                         print("Earned: ", earned, ".")
                         self.money += earned
                         self.items_map[goods_name] -= 1
+                        if self.items_map[goods_name] == 0:
+                            del self.items_map[goods_name]
                 elif thing[0] == "animal_food":
                     if point.point_type != "Market":
                         print("> I won't buy this.")
@@ -288,6 +296,8 @@ class PlayerCaravan:
                         self.money += earned
                         self.animal_food -= thing[1]
                         self.items_map[goods_name] -= 1
+                        if self.items_map[goods_name] == 0:
+                            del self.items_map[goods_name]
                 elif thing[0] == "human_food":
                     if point.point_type != "Market":
                         print("> I won't buy this.")
@@ -302,6 +312,8 @@ class PlayerCaravan:
                         self.money += earned
                         self.human_food -= thing[1]
                         self.items_map[goods_name] -= 1
+                        if self.items_map[goods_name] == 0:
+                            del self.items_map[goods_name]
                 elif thing[0] == "luxury":
                     if point.point_type != "Luxury":
                         print("> I won't buy this.")
@@ -315,6 +327,8 @@ class PlayerCaravan:
                         print("Earned: ", earned, ".")
                         self.money += earned
                         self.items_map[goods_name] -= 1
+                        if self.items_map[goods_name] == 0:
+                            del self.items_map[goods_name]
                 elif thing[0] == "weapon":
                     if point.point_type != "Armory":
                         print("> I won't buy this.")
@@ -328,6 +342,8 @@ class PlayerCaravan:
                         print("Earned: ", earned, ".")
                         self.money += earned
                         self.items_map[goods_name] -= 1
+                        if self.items_map[goods_name] == 0:
+                            del self.items_map[goods_name]
             else:
                 print("there is no such item")
         else:
@@ -423,7 +439,10 @@ class PlayerCaravan:
                                 self.capacity_maximum -= thing[-2]
                             print("Payed: ", point.goods_map[goods_name])
                             self.money -= point.goods_map[goods_name]
-                            self.items_map[goods_name] -= 1
+                            if goods_name in self.items_map:
+                                self.items_map[goods_name] += 1
+                            else:
+                                self.items_map[goods_name] = 1
                         else:
                             print("> You have not enough money!")
                 elif thing[0] == "animal_food":
