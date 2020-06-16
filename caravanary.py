@@ -46,6 +46,11 @@ def bandit_death_finish():
     return True
 
 
+def bandit_capture_finish():
+    print("bandits killed everybody in your caravan. Now you are their slave. game over")
+    return True
+
+
 def small_gang_attack():
     size = (caravan.human_size + caravan.animal_size) // 2 + rnd.randint(-2, 2)
     attackers = set()
@@ -86,8 +91,10 @@ def strong_gang_attack():
         attackers.add(Unit.Unit.killer_generator())
     attackers.add(Unit.Unit.leader_generator())
     print("Strong gang approaches you. Prepare to fight!")
-    caravan.fight(attackers)
-    if caravan.player_unit.is_alive():
+    lose = caravan.fight(attackers)
+    if lose:
+        bandit_capture_finish()
+    elif caravan.player_unit.is_alive():
         print("One more big gang was destroyed today")
         return caravan.next_day()
     else:

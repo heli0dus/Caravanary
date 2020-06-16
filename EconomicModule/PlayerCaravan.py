@@ -557,9 +557,15 @@ class PlayerCaravan:
                 for i in fighting_set.union(enemies):
                     if i.is_alive():
                         if i in fighting_set:
-                            i.hit(rnd.choice(tuple(enemies)))
+                            target = rnd.choice(tuple(enemies))
+                            while not target.is_alive():
+                                target = rnd.choice(tuple(enemies))
+                            i.hit(target)
                         else:
-                            i.hit(rnd.choice(tuple(fighting_set)))
+                            target = rnd.choice(tuple(fighting_set))
+                            while not target.is_alive():
+                                rnd.choice(tuple(fighting_set))
+                            i.hit(target)
                 for i in list(fighting_set):
                     if not i.is_alive():
                         if i.name != "You":
