@@ -24,7 +24,7 @@ class PlayerCaravan:
     caravan_capacity = -5  # Capacity of caravan, always <= 0
     capacity_current = 0  # Shown current capacity, sum of positive numbers
     capacity_maximum = 5  # Shown maximum of capacity, sum of negative numbers
-    items_map = {}  # Map of names and numbers of goods
+    items_map = {"bread": 3}  # Map of names and numbers of goods
     animal_size = 0  # Number of animals in caravan
     human_size = 1  # Number of humans in caravan (including player's character)
     mercenary_size = 0  # Number of mercenaries in caravan
