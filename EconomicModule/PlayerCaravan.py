@@ -638,6 +638,8 @@ class PlayerCaravan:
                 print("Your animals ran away with all the goods. You hang yourself in the nearest tree")
             result = True
         self.animal_food_open -= self.animal_size
+        if not result:
+            print("Day "+str(self.day)+":")
         return result
 # TODO      leveling
 # TODO      equipment

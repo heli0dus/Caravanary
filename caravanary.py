@@ -193,6 +193,7 @@ always_avialable = {
     "location": lambda: print(caravan.location),
     "commands": print_commands,
     "quit": quit_game,
+    "day": lambda: print("Day "+str(caravan.day)),
     "help": lambda: print("First of all, tour target. You need to survive as long as you can\n"
                           "To keep your caravan you need to resell goods.\n"
                           "But you can increase your profit by reselling items in different cities\n"
