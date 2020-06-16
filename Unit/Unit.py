@@ -112,31 +112,31 @@ class Unit:
     # bandits generators
     @classmethod
     def thief_generator(cls):
-        return cls.random_unit_generator(weapons.thief, armory.thief, "thief")
+        return cls.random_unit_generator(weapons.thief, armory.thief, ("thief"))
 
     @classmethod
     def pickpocket_generator(cls):
-        return cls.random_unit_generator(weapons.pickpocket, armory.pickpocket, "pickpocket")
+        return cls.random_unit_generator(weapons.pickpocket, armory.pickpocket, ("pickpocket"))
 
     @classmethod
     def archer_generator(cls):
-        return cls.random_unit_generator(weapons.archer, armory.archer, "archer")
+        return cls.random_unit_generator(weapons.archer, armory.archer, ("archer")
 
     @classmethod
     def bouncer_generator(cls):
-        return cls.random_unit_generator(weapons.bouncer, armory.bouncer, "bouncer")
+        return cls.random_unit_generator(weapons.bouncer, armory.bouncer, ("bouncer"))
 
     @classmethod
     def deserter_generator(cls):
-        return cls.random_unit_generator(weapons.deserter, armory.deserter, "desrter")
+        return cls.random_unit_generator(weapons.deserter, armory.deserter, ("desrter"))
 
     @classmethod
     def killer_generator(cls):
-        return cls.random_unit_generator(weapons.killer, armory.killer, "killer")
+        return cls.random_unit_generator(weapons.killer, armory.killer, ("killer"))
 
     @classmethod
     def leader_generator(cls):
-        return cls.random_unit_generator(weapons.leader, armory.leader, "bandit leader")
+        return cls.random_unit_generator(weapons.leader, armory.leader, ("bandit leader"))
 
 
 class Player(Unit):
