@@ -562,7 +562,8 @@ class PlayerCaravan:
                             i.hit(rnd.choice(tuple(fighting_set)))
                 for i in list(fighting_set):
                     if not i.is_alive():
-                        self.mercenary_set.remove(i)
+                        if i.name != "You":
+                            self.mercenary_set.remove(i)
                         fighting_set.remove(i)
 
                 for i in list(enemies):
