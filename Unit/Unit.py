@@ -192,34 +192,33 @@ class Mercenary(Unit):
         self.salary = salary
         self.type = type
 
-    # TODO change salary
     @classmethod
     def rookie_generator(cls):
-        return cls(super().random_unit_generator(weapons.rookie, armory.rookie), rnd.randint(5, 10), "Rookie")
+        return cls(super().random_unit_generator(weapons.rookie, armory.rookie), rnd.randint(3, 7), "Rookie")
 
     @classmethod
     def defender_generator(cls):
-        return cls(super().random_unit_generator(weapons.defender, armory.defender), rnd.randint(5, 10), "Defender")
+        return cls(super().random_unit_generator(weapons.defender, armory.defender), rnd.randint(5, 15), "Defender")
 
     @classmethod
     def soldier_generator(cls):
-        return cls(super().random_unit_generator(weapons.soldier, armory.soldier), rnd.randint(5, 10), "Soldier")
+        return cls(super().random_unit_generator(weapons.soldier, armory.soldier), rnd.randint(5, 15), "Soldier")
 
     @classmethod
     def guardian_generator(cls):
-        return cls(super().random_unit_generator(weapons.guardian, armory.guardian), rnd.randint(5, 10), "Guardian")
+        return cls(super().random_unit_generator(weapons.guardian, armory.guardian), rnd.randint(15, 30), "Guardian")
 
     @classmethod
     def assassin_generator(cls):
-        return cls(super().random_unit_generator(weapons.assassin, armory.assassin), rnd.randint(5, 10), "Assassin")
+        return cls(super().random_unit_generator(weapons.assassin, armory.assassin), rnd.randint(15, 30), "Assassin")
 
     @classmethod
     def hero_generator(cls):
-        return cls(super().random_unit_generator(weapons.hero, armory.hero), rnd.randint(5, 10), "Hero")
+        return cls(super().random_unit_generator(weapons.hero, armory.hero), rnd.randint(20, 50), "Hero")
 
     @classmethod
     def ultimate_generator(cls):
-        return cls(super().random_unit_generator(weapons.ultimate, armory.ultimate), rnd.randint(5, 10), "Ultimate")
+        return cls(super().random_unit_generator(weapons.ultimate, armory.ultimate), rnd.randint(25, 70), "Ultimate")
 
     @classmethod
     def LEEEEROOOY(cls):

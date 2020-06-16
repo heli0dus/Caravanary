@@ -14,4 +14,3 @@ animals_food_variability = len(animals_food_dictionary)
 # cost - cost N money by default
 
 # TODO descriptions
-# TODO more goods
