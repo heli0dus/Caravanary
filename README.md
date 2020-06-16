@@ -11,7 +11,7 @@ Caravanary is a game about being a caravan master. Resell goods, protect yoursel
 
 To launch this game you just need to launch caravanaty.py script from your console with any python 3 interpreter
 
-## Usefyl commands
+## Useful commands
 
 - commands: prints avialable commands
 - quit: quit the game
