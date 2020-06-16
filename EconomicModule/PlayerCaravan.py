@@ -17,12 +17,12 @@ class PlayerCaravan:
     to_pay = 0  # Amount of money spending on caravan per day
     debt = 0  # Current money debt
     debt_inc = 0  # Multiplier applied to debt every 7 days
-    human_food = 0  # Supply of food for humans
+    human_food = 3  # Supply of food for humans
     human_food_open = 0  # Supply of food for humans that cant be sold
     animal_food = 0  # Supply of food for animals
     animal_food_open = 0  # Supply of food for animals that cant be sold
-    caravan_capacity = -5  # Capacity of caravan, always <= 0
-    capacity_current = 0  # Shown current capacity, sum of positive numbers
+    caravan_capacity = -2  # Capacity of caravan, always <= 0
+    capacity_current = 3  # Shown current capacity, sum of positive numbers
     capacity_maximum = 5  # Shown maximum of capacity, sum of negative numbers
     items_map = {"bread": 3}  # Map of names and numbers of goods
     animal_size = 0  # Number of animals in caravan
