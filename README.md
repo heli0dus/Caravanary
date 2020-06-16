@@ -4,7 +4,7 @@
 # What is it
 ***
 
-Caravanary is a game about being a caravan master. Resell goods, protect yourself while travelling and manage fodd rescources.
+Caravanary is a text RPG game about being a caravan master. Resell goods, protect yourself while travelling and manage fodd rescources.
 
 ## How to launch
 ***
