@@ -161,6 +161,7 @@ class PlayerCaravan:
         while not flag:
             flag_feeded = True
             flag_take_more = False
+
             for i in self.items_map:
                 if tradeable_goods.tradeable_goods[i][0] == "human_food" and self.items_map[i] > 0:
                     if opened > need:
@@ -181,6 +182,9 @@ class PlayerCaravan:
                             opened += tradeable_goods.tradeable_goods[i][1]
                             self.items_map[i] -= 1
                             flag_feeded = True
+
+            if opened > need:
+                flag = True
 
             if not flag_feeded:
                 flag = False
@@ -589,16 +593,13 @@ class PlayerCaravan:
             if feed_human == "You don't have enough food." and not result:
                 print("You died of starvation. Keep an eye on your food balance")
                 result = True
-        else:
-            self.human_food_open -= self.human_size
+        self.human_food_open -= self.human_size
         if self.animal_food_open - self.animal_size < 0:
             feed_animal = self.open_animal_food(-(self.animal_food_open - self.animal_size))
             if feed_animal == "You don't have enough food." and not result:
                 print("Your animals ran away with all the goods. You hang yourself in the nearest tree")
             result = True
-            self.animal_food_open -= self.animal_size
-        else:
-            self.animal_food_open -= self.animal_size
+        self.animal_food_open -= self.animal_size
         return result
 # TODO      leveling
 # TODO      equipment
