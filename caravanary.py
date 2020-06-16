@@ -178,7 +178,7 @@ def buy_something():
 
 
 def sell_something():
-    item = input(">What do you want?\n")
+    item = input(">What do you have?\n")
     caravan.sell_item(item, caravan.point)
 
 
