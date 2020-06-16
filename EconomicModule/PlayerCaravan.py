@@ -169,6 +169,8 @@ class PlayerCaravan:
                     if tradeable_goods.tradeable_goods[i][1] <= need - opened:
                         self.human_food_open += tradeable_goods.tradeable_goods[i][1]
                         self.human_food -= tradeable_goods.tradeable_goods[i][1]
+                        self.caravan_capacity -= tradeable_goods.tradeable_goods[i][-2]
+                        self.capacity_current -= tradeable_goods.tradeable_goods[i][-2]
                         opened += tradeable_goods.tradeable_goods[i][1]
                         self.items_map[i] -= 1
                         flag_take_more = True
@@ -179,6 +181,8 @@ class PlayerCaravan:
                         if tradeable_goods.tradeable_goods[i][1] >= need - opened:
                             self.human_food_open += tradeable_goods.tradeable_goods[i][1]
                             self.human_food -= tradeable_goods.tradeable_goods[i][1]
+                            self.caravan_capacity -= tradeable_goods.tradeable_goods[i][-2]
+                            self.capacity_current -= tradeable_goods.tradeable_goods[i][-2]
                             opened += tradeable_goods.tradeable_goods[i][1]
                             self.items_map[i] -= 1
                             flag_feeded = True
