@@ -385,7 +385,10 @@ class PlayerCaravan:
                                 print("Payed: ", point.goods_map[goods_name])
                                 self.money -= point.goods_map[goods_name]
                                 self.animal_size += 1
-                                self.items_map[goods_name] += 1
+                                if goods_name in self.items_map:
+                                    self.items_map[goods_name] += 1
+                                else:
+                                    self.items_map[goods_name] = 1
                         else:
                             print("> You have not enough money!")
                 elif thing[0] == "armor":
@@ -415,7 +418,10 @@ class PlayerCaravan:
                                 self.capacity_maximum -= thing[-2]
                             self.money -= point.goods_map[goods_name]
                             self.animal_food += thing[1]
-                            self.items_map[goods_name] += 1
+                            if goods_name in self.items_map:
+                                self.items_map[goods_name] += 1
+                            else:
+                                self.items_map[goods_name] = 1
                         else:
                             print("> You have not enough money!")
                 elif thing[0] == "human_food":
@@ -431,7 +437,10 @@ class PlayerCaravan:
                             print("Payed: ", point.goods_map[goods_name])
                             self.money -= point.goods_map[goods_name]
                             self.human_food += thing[1]
-                            self.items_map[goods_name] += 1
+                            if goods_name in self.items_map:
+                                self.items_map[goods_name] += 1
+                            else:
+                                self.items_map[goods_name] = 1
                         else:
                             print("> You have not enough money!")
                 elif thing[0] == "luxury":
@@ -446,7 +455,10 @@ class PlayerCaravan:
                                 self.capacity_maximum -= thing[-2]
                             print("Payed: ", point.goods_map[goods_name])
                             self.money -= point.goods_map[goods_name]
-                            self.items_map[goods_name] += 1
+                            if goods_name in self.items_map:
+                                self.items_map[goods_name] += 1
+                            else:
+                                self.items_map[goods_name] = 1
                         else:
                             print("> You have not enough money!")
                 elif thing[0] == "weapon":
@@ -461,7 +473,10 @@ class PlayerCaravan:
                                 self.capacity_maximum -= thing[-2]
                             print("Payed: ", point.goods_map[goods_name])
                             self.money -= point.goods_map[goods_name]
-                            self.items_map[goods_name] += 1
+                            if goods_name in self.items_map:
+                                self.items_map[goods_name] += 1
+                            else:
+                                self.items_map[goods_name] = 1
                         else:
                             print("> You have not enough money!")
             else:
