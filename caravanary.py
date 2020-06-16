@@ -26,12 +26,15 @@ def choose_point(num):
 
 def move():
     target = input("Where do you want to move? ")
-    length = caravan.caravan_move(target)
-    dead = False
-    for i in range(length):
-        if not dead:
-            dead = road_travel()
-    return dead
+    if target in towns_and_roads.towns_names:
+        length = caravan.caravan_move(target)
+        dead = False
+        for i in range(length):
+            if not dead:
+                dead = road_travel()
+        return dead
+    else:
+        print("There is no such city")
 
 
 def nothing():
@@ -42,7 +45,7 @@ def nothing():
 
 
 def bandit_death_finish():
-    print("What a good death for such a good person. Game over")
+    print("Bandits kiiled you. What a good death for such a good person. Game over")
     return True
 
 
@@ -59,8 +62,10 @@ def small_gang_attack():
         attackers.add(Unit.Unit.pickpocket_generator())
     attackers.add(Unit.Unit.archer_generator())
     print("Small gang approaches you. prepare to fight!")
-    caravan.fight(attackers)
-    if caravan.player_unit.is_alive():
+    lose = caravan.fight(attackers)
+    if lose:
+        bandit_death_finish()
+    elif caravan.player_unit.is_alive():
         print("That small gang is dead")
         return caravan.next_day()
     else:
@@ -75,8 +80,10 @@ def med_gang_attack():
         attackers.add(Unit.Unit.bouncer_generator())
     attackers.add(Unit.Unit.deserter_generator())
     print("A gang approaches you. prepare to fight!")
-    caravan.fight(attackers)
-    if caravan.player_unit.is_alive():
+    lose = caravan.fight(attackers)
+    if lose:
+        bandit_death_finish()
+    elif caravan.player_unit.is_alive():
         print("That gang is dead")
         return caravan.next_day()
     else:
@@ -93,7 +100,7 @@ def strong_gang_attack():
     print("Strong gang approaches you. Prepare to fight!")
     lose = caravan.fight(attackers)
     if lose:
-        bandit_capture_finish()
+        bandit_death_finish()
     elif caravan.player_unit.is_alive():
         print("One more big gang was destroyed today")
         return caravan.next_day()
