@@ -27,13 +27,18 @@ def choose_point(num):
 def move():
     target = input("Where do you want to move? ")
     length = caravan.caravan_move(target)
+    dead = False
     for i in range(length):
-        road_travel()
+        if not dead:
+            dead = road_travel()
+    return dead
 
 
 def nothing():
+    dead = False
     print("You peacefully passed this day")
-    caravan.next_day()
+    dead = caravan.next_day()
+    return dead
 
 
 def bandit_death_finish():
@@ -52,7 +57,7 @@ def small_gang_attack():
     caravan.fight(attackers)
     if caravan.player_unit.is_alive():
         print("That small gang is dead")
-        caravan.next_day()
+        return caravan.next_day()
     else:
         return bandit_death_finish()
 
@@ -68,7 +73,7 @@ def med_gang_attack():
     caravan.fight(attackers)
     if caravan.player_unit.is_alive():
         print("That gang is dead")
-        caravan.next_day()
+        return caravan.next_day()
     else:
         return bandit_death_finish()
 
@@ -84,7 +89,7 @@ def strong_gang_attack():
     caravan.fight(attackers)
     if caravan.player_unit.is_alive():
         print("One more big gang was destroyed today")
-        caravan.next_day()
+        return caravan.next_day()
     else:
         return bandit_death_finish()
 
@@ -124,7 +129,7 @@ def road_travel():
                         [nothing,
                          strong_gang_attack
                          ]]
-    rnd.choice(russian_roulette[caravan.day // 7 % 4])()
+    return rnd.choice(russian_roulette[caravan.day // 7 % 4])()
 
 
 def trade():

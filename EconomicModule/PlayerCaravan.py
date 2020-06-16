@@ -549,7 +549,7 @@ class PlayerCaravan:
         now = EconomicModule.Town.get_town_index(Town.real_towns_names[self.location])
         target = EconomicModule.Town.get_town_index(Town.real_towns_names[target])
         if Resources.towns_and_roads.roadsMatrix[now][target] > 0:
-            self.location = EconomicModule.Town.town_by_index(target).name
+            self.location = EconomicModule.Town.town_by_index(target)
             return Resources.towns_and_roads.roadsMatrix[now][target]
         else:
             print("There is no road to this town.")
