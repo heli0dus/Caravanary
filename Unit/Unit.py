@@ -221,6 +221,11 @@ class Mercenary(Unit):
     def ultimate_generator(cls):
         return cls(super().random_unit_generator(weapons.ultimate, armory.ultimate), rnd.randint(5, 10), "Ultimate")
 
+    @classmethod
+    def LEEEEROOOY(cls):
+        print("cheat used")
+        return cls(super().random_unit_generator(weapons.ultimate, armory.ultimate), 0, "LEEEEROOOY JEEEENKIIINS")
+
     def print(self):
         print(self.type, self.name)
         self.print_attack_stats()
