@@ -535,9 +535,9 @@ class PlayerCaravan:
                 print("wrong command, try again")
             elif player_in == "yes":
                 print("You stand to defend your caravan with your mercenaries")
-                fighting_set = self.mercenary_set.union({self.player_unit})
+                fighting_set = set(self.mercenary_set.union({self.player_unit}))
             else:
-                fighting_set = self.mercenary_set
+                fighting_set = set(self.mercenary_set)
                 print("You hide somewhere to protect your life")
 
         if isinstance(enemies, set):
@@ -556,7 +556,7 @@ class PlayerCaravan:
                 for i in list(enemies):
                     if not i.is_alive():
                         enemies.remove(i)
-            return len(fighting_set) > 0
+            return len(fighting_set) <= 0
         else:
             print("Wrong argument of enemies given")
 
