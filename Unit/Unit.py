@@ -22,7 +22,7 @@ class Unit:
 
     def hit(self, a):
         if isinstance(a, Unit):
-            hit = rnd.randint(0, 100) + self.accuracy()
+            hit = rnd.randint(0, 100) + self.accuracy
             if hit > a.evade_chance:
                 dmg = rnd.randint(self.low_dmg, self.high_dmg) - a.armor
                 if dmg > 0:
